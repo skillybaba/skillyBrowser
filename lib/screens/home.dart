@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
+import './subscreens/pretabs.dart';
+import './subscreens/animatedfloating.dart';
+import './subscreens/urlbox.dart';
+import './subscreens/newssubs.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,60 +16,42 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+        backgroundColor: Colors.black,
         appBar: AppBar(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30))),
-          title: Text('SkillyBrowzer',style: TextStyle(color: Colors.teal),),
-          backgroundColor: CupertinoColors.white,
+          title: Text(
+            'Skilly Browser',
+            style: TextStyle(color: Colors.white, fontSize: 22),
+          ),
+          backgroundColor: Colors.purple,
           centerTitle: true,
           leading: FlatButton(
             onPressed: () {},
             child: Container(
                 child: Icon(
               CupertinoIcons.add_circled,
-              color: Colors.teal,
+              color: Colors.white,
             )),
           ),
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 9,
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 15, right: 15),
-              child: TextField(
-                controller: url,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15)),
-                  hintText: "@ ENTER URL",
-                ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 9,
               ),
-            ),
-            
-          ],
+              Pretabs(),
+              Urlbox(),
+              SizedBox(
+                height: 10,
+              ),
+              NewsSub(),
+            ],
+          ),
         ),
-        floatingActionButton: AnimatedFloatingActionButton(
-          colorStartAnimation: Colors.white70,
-          colorEndAnimation: Colors.teal,
-          animatedIconData: AnimatedIcons.view_list,
-          fabButtons: <Widget>[
-            FloatingActionButton(
-                backgroundColor: Colors.teal,
-                tooltip: 'NEWS',
-                onPressed: () {},
-                child: Icon(Icons.new_releases)),
-            FloatingActionButton(
-              tooltip: 'NEW TABS',
-              backgroundColor: Colors.teal,
-              onPressed: () {},
-              child: Icon(Icons.tab),
-            )
-          ],
-        ));
+        floatingActionButton: Animatedfloating());
   }
 }
