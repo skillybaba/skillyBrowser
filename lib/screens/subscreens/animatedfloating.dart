@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
+
 class Animatedfloating extends StatefulWidget {
   @override
   _AnimatedfloatingState createState() => _AnimatedfloatingState();
@@ -15,15 +16,24 @@ class _AnimatedfloatingState extends State<Animatedfloating> {
       animatedIconData: AnimatedIcons.view_list,
       fabButtons: <Widget>[
         FloatingActionButton(
+            heroTag: 'news',
             backgroundColor: Colors.purple,
             tooltip: 'NEWS',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, "/news");
+            },
             child: Icon(Icons.new_releases)),
         FloatingActionButton(
+          heroTag: 'newtab',
           tooltip: 'NEW TABS',
           backgroundColor: Colors.purple,
-          onPressed: () {},
-          child: Icon(Icons.tab),
+          onPressed: () {
+            Navigator.pushNamed(context, '/tabs', arguments: {
+              'url':
+                  'https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjq8NaJie_qAhVRIbcAHSwAA2gQPAgH'
+            });
+          },
+          child: Icon(Icons.add_circle_outline),
         )
       ],
     );

@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
             onPressed: () {},
             child: Container(
                 child: Icon(
-              CupertinoIcons.add_circled,
+              Icons.table_chart,
               color: Colors.white,
             )),
           ),

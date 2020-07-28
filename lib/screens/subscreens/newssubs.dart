@@ -28,7 +28,9 @@ class _NewsSubState extends State<NewsSub> {
                 child: Container(
                     child: Column(
               children: <Widget>[
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 Container(
                   child: Text(
                     "NEWS UPDATES",
@@ -61,7 +63,6 @@ class _NewsSubState extends State<NewsSub> {
                     image: NetworkImage(
                         'https://dynaimage.cdn.cnn.com/cnn/digital-images/org/09346fef-c333-4266-b17a-5fb1f9cbe43f.jpg'),
                     height: 220,
-                    
                   ),
                 ),
                 SizedBox(
@@ -75,7 +76,7 @@ class _NewsSubState extends State<NewsSub> {
                     ),
                   ),
                 ),
-                 Container(
+                Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(50),
@@ -95,7 +96,6 @@ class _NewsSubState extends State<NewsSub> {
                     image: NetworkImage(
                         'https://dynaimage.cdn.cnn.com/cnn/digital-images/org/09346fef-c333-4266-b17a-5fb1f9cbe43f.jpg'),
                     height: 220,
-                    
                   ),
                 ),
                 SizedBox(
@@ -109,13 +109,14 @@ class _NewsSubState extends State<NewsSub> {
                     ),
                   ),
                 ),
-                
                 FlatButton.icon(
                   splashColor: Colors.purple[100],
                   color: Colors.purple,
-                  onPressed: () {},
-                  icon: Icon(Icons.add,color:Colors.black),
-                  label: Text("MORE",style: TextStyle(color:Colors.black)),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/news');
+                  },
+                  icon: Icon(Icons.add, color: Colors.black),
+                  label: Text("MORE", style: TextStyle(color: Colors.black)),
                 ),
               ],
             )))),
