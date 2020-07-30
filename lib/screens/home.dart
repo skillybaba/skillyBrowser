@@ -5,6 +5,7 @@ import './subscreens/pretabs.dart';
 import './subscreens/animatedfloating.dart';
 import './subscreens/urlbox.dart';
 import './subscreens/newssubs.dart';
+import '../services/history.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+ 
   TextEditingController url = TextEditingController();
   @override
   Widget build(BuildContext context) {
