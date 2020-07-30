@@ -8,16 +8,19 @@ import './subscreens/newssubs.dart';
 import '../services/history.dart';
 
 class Home extends StatefulWidget {
+  
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
- 
+  var news;
   TextEditingController url = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    news= ModalRoute.of(context).settings.arguments;
     return Scaffold(
+      drawer: Drawer(child: Center(child:Text("COMING SOON MORE")),),
         backgroundColor: Colors.black,
         appBar: AppBar(
           shape: RoundedRectangleBorder(
@@ -50,10 +53,10 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 10,
               ),
-              NewsSub(),
+              NewsSub(news:news['news']),
             ],
           ),
         ),
-        floatingActionButton: Animatedfloating());
+        floatingActionButton: Animatedfloating(news:news['news']));
   }
 }

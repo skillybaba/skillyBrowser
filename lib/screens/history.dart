@@ -19,7 +19,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     }
   }
 
-  value() {
+  value() async {
     getvalue('history');
     var list2 = [];
     if (ret() != null) {

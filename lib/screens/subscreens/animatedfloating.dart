@@ -4,11 +4,19 @@ import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
 import 'package:skillybrowser/services/history.dart';
 
 class Animatedfloating extends StatefulWidget {
+  var news;
+  Animatedfloating({var news}) {
+    this.news = news;
+  }
   @override
-  _AnimatedfloatingState createState() => _AnimatedfloatingState();
+  _AnimatedfloatingState createState() => _AnimatedfloatingState(news:news);
 }
 
 class _AnimatedfloatingState extends State<Animatedfloating> {
+  var news;
+  _AnimatedfloatingState({var news}) {
+    this.news = news;
+  }
   @override
   Widget build(BuildContext context) {
     return AnimatedFloatingActionButton(
@@ -21,7 +29,9 @@ class _AnimatedfloatingState extends State<Animatedfloating> {
             backgroundColor: Colors.purple,
             tooltip: 'NEWS',
             onPressed: () {
-              Navigator.pushNamed(context, "/news");
+              Navigator.pushNamed(context, "/news",arguments: {
+                'news':news
+              });
             },
             child: Icon(Icons.new_releases)),
         FloatingActionButton(
