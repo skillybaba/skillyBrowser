@@ -7,13 +7,13 @@ class NewsSub extends StatefulWidget {
     this.news = news;
   }
   @override
-  _NewsSubState createState() => _NewsSubState(news:news);
+  _NewsSubState createState() => _NewsSubState(news: news);
 }
 
 class _NewsSubState extends State<NewsSub> {
   var news;
   _NewsSubState({var news}) {
-    this.news=news;
+    this.news = news;
   }
   String newstext =
       ''' President Trump's national security adviser, Robert O'Brien, has tested positive for coronavirus, 
@@ -69,7 +69,8 @@ class _NewsSubState extends State<NewsSub> {
                       );
                     },
                     image: NetworkImage(
-                        'http://skillybaba.pythonanywhere.com/'+news[news.length-1]['image']),
+                        'http://skillybaba.pythonanywhere.com/' +
+                            news[news.length - 1]['image']),
                     height: 220,
                   ),
                 ),
@@ -78,11 +79,28 @@ class _NewsSubState extends State<NewsSub> {
                 ),
                 Container(
                   child: Text(
-                    news[news.length-1]['brief'],
+                    news[news.length - 1]['brief'],
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
+                ),
+                Container(
+                  child: Center(
+                      child: RaisedButton.icon(
+                    color: Colors.grey[900],
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/tabs', arguments: {
+                        'url': news[news.length - 1]['morelink'],
+                      });
+                    },
+                    icon: Icon(Icons.more_horiz, color: Colors.purple),
+                    label: Text("READ MORE",
+                        style: TextStyle(color: Colors.purple)),
+                  )),
+                ),
+                SizedBox(
+                  height: 30,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -102,7 +120,8 @@ class _NewsSubState extends State<NewsSub> {
                       );
                     },
                     image: NetworkImage(
-                        'http://skillybaba.pythonanywhere.com/'+news[news.length-2]['image']),
+                        'http://skillybaba.pythonanywhere.com/' +
+                            news[news.length - 2]['image']),
                     height: 220,
                   ),
                 ),
@@ -111,19 +130,35 @@ class _NewsSubState extends State<NewsSub> {
                 ),
                 Container(
                   child: Text(
-                    news[news.length-2]['brief'],
+                    news[news.length - 2]['brief'],
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
+                Container(
+                  child: Center(
+                      child: RaisedButton.icon(
+                    color: Colors.grey[900],
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/tabs', arguments: {
+                        'url': news[news.length - 2]['morelink'],
+                      });
+                    },
+                    icon: Icon(Icons.more_horiz, color: Colors.purple),
+                    label: Text("READ MORE",
+                        style: TextStyle(color: Colors.purple)),
+                  )),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
                 FlatButton.icon(
                   splashColor: Colors.purple[100],
                   color: Colors.purple,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/news',arguments:{
-                      'news':news
-                    });
+                    Navigator.pushNamed(context, '/news',
+                        arguments: {'news': news});
                   },
                   icon: Icon(Icons.add, color: Colors.black),
                   label: Text("MORE", style: TextStyle(color: Colors.black)),
