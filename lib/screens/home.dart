@@ -28,8 +28,8 @@ class _HomeState extends State<Home> {
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30))),
           title: Text(
-            'Skilly Browser',
-            style: TextStyle(color: Colors.white, fontSize: 22),
+            'SKILLY BROWSER',
+            style: TextStyle(color: Colors.white, fontSize: 18,fontWeight:FontWeight.bold),
           ),
           backgroundColor: Colors.purple,
           centerTitle: true,

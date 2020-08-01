@@ -26,6 +26,7 @@ class _TabsState extends State<Tabs> {
     super.dispose();
 
     FlutterWebviewPlugin().dispose();
+    
   }
 
   @override
@@ -42,6 +43,7 @@ class _TabsState extends State<Tabs> {
 
     // });
     return WebviewScaffold(
+      
       enableAppScheme: true,
       geolocationEnabled: true,
       bottomNavigationBar: BottomNavigationBar(

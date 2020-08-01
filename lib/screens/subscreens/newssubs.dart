@@ -15,9 +15,6 @@ class _NewsSubState extends State<NewsSub> {
   _NewsSubState({var news}) {
     this.news = news;
   }
-  String newstext =
-      ''' President Trump's national security adviser, Robert O'Brien, has tested positive for coronavirus, 
- ''';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,7 +40,7 @@ class _NewsSubState extends State<NewsSub> {
                   child: Text(
                     "NEWS UPDATES",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.purple,
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
@@ -75,15 +72,19 @@ class _NewsSubState extends State<NewsSub> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Container(
                   child: Text(
                     news[news.length - 1]['brief'],
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 20,
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 Container(
                   child: Center(
@@ -96,11 +97,12 @@ class _NewsSubState extends State<NewsSub> {
                     },
                     icon: Icon(Icons.more_horiz, color: Colors.purple),
                     label: Text("READ MORE",
-                        style: TextStyle(color: Colors.purple)),
+                        style: TextStyle(color: Colors.purple,),
+                        ),
                   )),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -126,15 +128,19 @@ class _NewsSubState extends State<NewsSub> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 40,
                 ),
                 Container(
                   child: Text(
                     news[news.length - 2]['brief'],
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 20
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 40,
                 ),
                 Container(
                   child: Center(
@@ -151,7 +157,7 @@ class _NewsSubState extends State<NewsSub> {
                   )),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
                 FlatButton.icon(
                   splashColor: Colors.purple[100],

@@ -3,6 +3,7 @@ import '../services/history.dart';
 import '../services/history.dart';
 import 'dart:io';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 class HistoryScreen extends StatefulWidget {
   @override
   _HistoryScreenState createState() => _HistoryScreenState();
@@ -11,7 +12,7 @@ class HistoryScreen extends StatefulWidget {
 class _HistoryScreenState extends State<HistoryScreen> {
   Map args;
   var list;
-  bool sta=false;
+  bool sta = false;
   String text({String str}) {
     if (str.contains('https://www.google.com/search?-b-d&q=')) {
       return str.substring(37);
@@ -80,6 +81,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 )),
             SliverList(delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
+              double i = 120;
+              
+              if ((index<list.length)&&(list[index].substring(37).length > 20)) {
+                i = 30;
+              }
               if (index < list.length) {
                 return Container(
                   padding: EdgeInsets.all(9),
@@ -91,24 +97,27 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   child: Row(
                     children: <Widget>[
                       FlatButton.icon(
-                          padding: EdgeInsets.only(left: 120),
-                          onPressed: () {
-                            Navigator.popAndPushNamed(context, "/tabs",
-                                arguments: {
-                                  'url': list[index],
-                                });
-                          },
-                          icon: Icon(
-                            Icons.history,
-                            color: Colors.white,
-                          ),
-                          label: SingleChildScrollView(
-                            child: Center(
-                                child: Text(
+                        padding: EdgeInsets.only(left: i),
+                        onPressed: () {
+                          Navigator.popAndPushNamed(context, "/tabs",
+                              arguments: {
+                                'url': list[index],
+                              });
+                        },
+                        icon: Icon(
+                          Icons.history,
+                          color: Colors.white,
+                        ),
+                        label: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Text(
                               text(str: list[index]),
                               style: TextStyle(color: Colors.white),
+                              maxLines: 4,
+                              overflow: TextOverflow.fade,
+                              softWrap: true,
                             )),
-                          )),
+                      ),
                     ],
                   ),
                 );
@@ -120,6 +129,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ),
       ));
     }
-    return Center(child: SpinKitCircle(color: Colors.purple,));
+    return Center(
+        child: SpinKitCircle(
+      color: Colors.purple,
+    ));
   }
 }
