@@ -20,13 +20,13 @@ class _AnimatedfloatingState extends State<Animatedfloating> {
   @override
   Widget build(BuildContext context) {
     return AnimatedFloatingActionButton(
-      colorStartAnimation: Colors.purple,
-      colorEndAnimation: Colors.purple,
+      colorStartAnimation: CupertinoColors.systemPurple,
+      colorEndAnimation: CupertinoColors.systemPurple,
       animatedIconData: AnimatedIcons.view_list,
       fabButtons: <Widget>[
         FloatingActionButton(
             heroTag: 'news',
-            backgroundColor: Colors.purple,
+            backgroundColor: CupertinoColors.systemPurple,
             tooltip: 'NEWS',
             onPressed: () {
               Navigator.pushNamed(context, "/news",arguments: {
@@ -37,7 +37,7 @@ class _AnimatedfloatingState extends State<Animatedfloating> {
         FloatingActionButton(
           heroTag: 'history',
           tooltip: 'History',
-          backgroundColor: Colors.purple,
+          backgroundColor: CupertinoColors.systemPurple,
           onPressed: () {
             Navigator.pushNamed(context, '/histroy', arguments: {});
           },
@@ -46,7 +46,7 @@ class _AnimatedfloatingState extends State<Animatedfloating> {
         FloatingActionButton(
           heroTag: 'newtab',
           tooltip: 'NEW TABS',
-          backgroundColor: Colors.purple,
+          backgroundColor: CupertinoColors.systemPurple,
           onPressed: () {
             Navigator.pushNamed(context, '/tabs', arguments: {
               'url':

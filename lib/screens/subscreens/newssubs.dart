@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_widgets/animated_widgets.dart';
 
@@ -40,7 +41,7 @@ class _NewsSubState extends State<NewsSub> {
                   child: Text(
                     "NEWS UPDATES",
                     style: TextStyle(
-                        color: Colors.purple,
+                        color: CupertinoColors.systemPurple,
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
@@ -95,9 +96,9 @@ class _NewsSubState extends State<NewsSub> {
                         'url': news[news.length - 1]['morelink'],
                       });
                     },
-                    icon: Icon(Icons.more_horiz, color: Colors.purple),
+                    icon: Icon(Icons.more_horiz, color: CupertinoColors.systemPurple),
                     label: Text("READ MORE",
-                        style: TextStyle(color: Colors.purple,),
+                        style: TextStyle(color: CupertinoColors.systemPurple,),
                         ),
                   )),
                 ),
@@ -151,17 +152,17 @@ class _NewsSubState extends State<NewsSub> {
                         'url': news[news.length - 2]['morelink'],
                       });
                     },
-                    icon: Icon(Icons.more_horiz, color: Colors.purple),
+                    icon: Icon(Icons.more_horiz, color: CupertinoColors.systemPurple),
                     label: Text("READ MORE",
-                        style: TextStyle(color: Colors.purple)),
+                        style: TextStyle(color: CupertinoColors.systemPurple)),
                   )),
                 ),
                 SizedBox(
                   height: 40,
                 ),
                 FlatButton.icon(
-                  splashColor: Colors.purple[100],
-                  color: Colors.purple,
+                  splashColor: Colors.purple[300],
+                  color: CupertinoColors.systemPurple,
                   onPressed: () {
                     Navigator.pushNamed(context, '/news',
                         arguments: {'news': news});

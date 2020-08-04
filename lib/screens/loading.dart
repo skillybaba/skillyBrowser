@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../services/newservice.dart';
@@ -21,6 +22,6 @@ class _LoadingState extends State<Loading> {
   Widget build(BuildContext context) {
     getnews();
     return Container(
-        child: Center(child: SpinKitCubeGrid(color: Colors.purple)));
+        child: Center(child: SpinKitCubeGrid(color:CupertinoColors.systemPurple)));
   }
 }

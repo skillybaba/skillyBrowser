@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './subscreens/newssubs.dart';
 
@@ -18,7 +19,7 @@ class _NewsState extends State<News> {
         child: CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
-              backgroundColor: Colors.purple,
+              backgroundColor: CupertinoColors.systemPurple,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
@@ -73,7 +74,7 @@ class _NewsState extends State<News> {
                                       fontSize: 10,
                                       decoration: TextDecoration.none))),
                           RaisedButton.icon(
-                              color: Colors.purple,
+                              color: CupertinoColors.systemPurple,
                               onPressed: () {
                                 Navigator.pushNamed(context, '/tabs',
                                     arguments: {

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // https://www.google.com/search?q=kanishk
@@ -44,7 +45,7 @@ class _UrlboxState extends State<Urlbox> {
                 borderRadius: BorderRadius.all(Radius.circular(30))),
             icon: Icon(
               Icons.alternate_email,
-              color: Colors.purple,
+              color: CupertinoColors.systemPurple,
             ),
             hintText: 'ENTER THE URL'),
       ),

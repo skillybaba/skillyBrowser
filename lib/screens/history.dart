@@ -82,8 +82,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
             SliverList(delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
               double i = 120;
-              
-              if ((index<list.length)&&(list[index].substring(37).length > 20)) {
+
+              if ((index < list.length) &&
+                  (list[index].substring(37).length > 20)) {
                 i = 30;
               }
               if (index < list.length) {

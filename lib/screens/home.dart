@@ -6,6 +6,7 @@ import './subscreens/animatedfloating.dart';
 import './subscreens/urlbox.dart';
 import './subscreens/newssubs.dart';
 import '../services/history.dart';
+import 'package:animated_widgets/animated_widgets.dart';
 
 class Home extends StatefulWidget {
   
@@ -19,7 +20,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     news= ModalRoute.of(context).settings.arguments;
-    return Scaffold(
+    return TranslationAnimatedWidget(
+    enabled: true, //update this boolean to forward/reverse the animation
+    values: [
+        Offset(0, 20), // disabled value value
+        Offset(0, 25), //intermediate value
+        Offset(0, 0) //enabled value
+    ],
+    child:Scaffold(
       drawer: Drawer(child: Center(child:Text("COMING SOON MORE")),),
         backgroundColor: Colors.black,
         appBar: AppBar(
@@ -31,7 +39,7 @@ class _HomeState extends State<Home> {
             'SKILLY BROWSER',
             style: TextStyle(color: Colors.white, fontSize: 18,fontWeight:FontWeight.bold),
           ),
-          backgroundColor: Colors.purple,
+          backgroundColor: CupertinoColors.systemPurple,
           centerTitle: true,
           leading: FlatButton(
             onPressed: () {},
@@ -57,6 +65,6 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        floatingActionButton: Animatedfloating(news:news['news']));
+        floatingActionButton: Animatedfloating(news:news['news'])));
   }
 }
