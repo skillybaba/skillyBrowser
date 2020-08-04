@@ -15,7 +15,7 @@ class _NewsState extends State<News> {
     news = news['news'];
     print(news);
     return Container(
-        color: Colors.black,
+        color: Color(0xff00011f),
         child: CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
@@ -39,7 +39,7 @@ class _NewsState extends State<News> {
                       padding: EdgeInsets.all(20),
                       margin: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.grey[900],
+                        color: Color(0xff040523),
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Column(
@@ -74,7 +74,7 @@ class _NewsState extends State<News> {
                                       fontSize: 10,
                                       decoration: TextDecoration.none))),
                           RaisedButton.icon(
-                              color: CupertinoColors.systemPurple,
+                              color: Color(0xff040523),
                               onPressed: () {
                                 Navigator.pushNamed(context, '/tabs',
                                     arguments: {
@@ -84,11 +84,11 @@ class _NewsState extends State<News> {
                               },
                               label: Text(
                                 'ReadMore',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: CupertinoColors.systemPurple),
                               ),
                               icon: Icon(
                                 Icons.more_horiz,
-                                color: Colors.white,
+                                color: CupertinoColors.systemPurple,
                               )),
                         ],
                       ),

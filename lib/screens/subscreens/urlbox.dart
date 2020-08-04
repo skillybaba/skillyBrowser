@@ -15,7 +15,7 @@ class _UrlboxState extends State<Urlbox> {
     return Container(
       padding: EdgeInsets.all(30),
       decoration: BoxDecoration(
-        color: Colors.grey[900],
+        color: Color(0xff04523),
         borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
       ),

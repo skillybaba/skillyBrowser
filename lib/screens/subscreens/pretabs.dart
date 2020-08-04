@@ -15,9 +15,9 @@ class _PretabsState extends State<Pretabs> {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.only(top: 20),
-        // color: Colors.grey[900],
+        // color: Color(0xff040523),
         decoration: BoxDecoration(
-          color: Colors.grey[900],
+          color: Color(0xff040523),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(15), topRight: Radius.circular(15)),
         ),
@@ -33,7 +33,7 @@ class _PretabsState extends State<Pretabs> {
                     onPressed: () {
  Navigator.pushNamed(context,'/tabs' ,arguments: {'url':'https://www.instagram.com/'});
                     },
-                    color: Colors.grey[900],
+                    color: Color(0xff040523),
                     child: Image(
                         height: 50, image: AssetImage('images/insta.png')),
                   )),
@@ -42,7 +42,7 @@ class _PretabsState extends State<Pretabs> {
                     onPressed: () {
                        Navigator.pushNamed(context,'/tabs' ,arguments: {'url':'https://www.facebook.com/'});
                     },
-                    color: Colors.grey[900],
+                    color: Color(0xff040523),
                     child: Image(
                         height: 50, image: AssetImage('images/facebook.png')),
                   )),
@@ -51,7 +51,7 @@ class _PretabsState extends State<Pretabs> {
                     onPressed: () {
                        Navigator.pushNamed(context,'/tabs' ,arguments: {'url':'https://www.google.com/'});
                     },
-                    color: Colors.grey[900],
+                    color: Color(0xff040523),
                     child: Image(
                         height: 50, image: AssetImage('images/google.png')),
                   )),

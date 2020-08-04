@@ -26,7 +26,7 @@ class _NewsSubState extends State<NewsSub> {
         child: Container(
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
-                color: Colors.grey[900],
+                color: Color(0xff040523),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30))),
@@ -90,7 +90,7 @@ class _NewsSubState extends State<NewsSub> {
                 Container(
                   child: Center(
                       child: RaisedButton.icon(
-                    color: Colors.grey[900],
+                    color: Color(0xff040523),
                     onPressed: () {
                       Navigator.pushNamed(context, '/tabs', arguments: {
                         'url': news[news.length - 1]['morelink'],
@@ -146,7 +146,7 @@ class _NewsSubState extends State<NewsSub> {
                 Container(
                   child: Center(
                       child: RaisedButton.icon(
-                    color: Colors.grey[900],
+                    color: Color(0xff040523),
                     onPressed: () {
                       Navigator.pushNamed(context, '/tabs', arguments: {
                         'url': news[news.length - 2]['morelink'],
@@ -167,8 +167,8 @@ class _NewsSubState extends State<NewsSub> {
                     Navigator.pushNamed(context, '/news',
                         arguments: {'news': news});
                   },
-                  icon: Icon(Icons.add, color: Colors.black),
-                  label: Text("MORE", style: TextStyle(color: Colors.black)),
+                  icon: Icon(Icons.add, color: Color(0xff040523)),
+                  label: Text("MORE", style: TextStyle(color: Color(0xff040523))),
                 ),
               ],
             )))),

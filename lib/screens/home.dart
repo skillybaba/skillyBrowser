@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
             drawer: Drawer(
               child: Center(child: Text("COMING SOON MORE")),
             ),
-            backgroundColor: Colors.black,
+            backgroundColor: Color(0xff00011f),
             appBar: AppBar(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(

@@ -84,8 +84,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
               double i = 120;
 
               if ((index < list.length) &&
-                  (list[index].substring(37).length > 20)) {
+                  (!list[index].contains('www.') &&
+                      (!list[index].contains('.com')) &&
+                      (!list[index].contains('https://')) &&
+                      (list[index].substring(37).length > 20))) {
                 i = 30;
+              } else {
+                i = 100;
               }
               if (index < list.length) {
                 return Container(
