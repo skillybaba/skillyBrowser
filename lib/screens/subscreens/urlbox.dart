@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:skillybrowser/services/history.dart';
 
 // https://www.google.com/search?q=kanishk
 class Urlbox extends StatefulWidget {
@@ -19,16 +20,27 @@ class _UrlboxState extends State<Urlbox> {
             bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
       ),
       child: TextField(
-        onEditingComplete: () {
+        onEditingComplete: () async {
+          var a;
+
           if (url.text.contains('https://')) {
+            await getinsta();
+            a = await setvalue(url.text.toString());
             Navigator.pushNamed(context, '/tabs', arguments: {'url': url.text});
-          } else if(url.text.contains('.com')) {
+          } else if (url.text.contains('.com')) {
+            await getinsta();
+            a = await setvalue("https://" + url.text.toString());
             Navigator.pushNamed(context, '/tabs',
                 arguments: {'url': "https://" + url.text});
-          }
-          else{
-             Navigator.pushNamed(context, '/tabs',
-                arguments: {'url': "https://www.google.com/search?-b-d&q=" + url.text});
+          } else {
+            await getinsta();
+            a = await setvalue(
+
+                "https://www.google.com/search?-b-d&q=" + url.text.toString());
+            Navigator.pushNamed(context, '/tabs', arguments: {
+              'url': "https://www.google.com/search?-b-d&q=" + url.text
+            });
+            print(a);
           }
         },
         style: TextStyle(color: Colors.white),
