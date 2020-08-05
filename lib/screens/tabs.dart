@@ -37,7 +37,7 @@ class _TabsState extends State<Tabs> {
     // double val;
 
     args = ModalRoute.of(context).settings.arguments;
-
+    
     print(args);
     // FlutterWebviewPlugin().onProgressChanged.listen((event) {
     //   setState(() {
