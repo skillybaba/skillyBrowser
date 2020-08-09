@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:flutter/material.dart';
 import '../services/history.dart';
@@ -10,42 +11,65 @@ class Tabs extends StatefulWidget {
 }
 
 class _TabsState extends State<Tabs> {
+  FlutterWebviewPlugin webviewPlugin = FlutterWebviewPlugin();
   String urls =
       "https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjq8NaJie_qAhVRIbcAHSwAA2gQPAgH";
   TextEditingController controller = TextEditingController(text: 'https://');
   Map args;
   int index = 0;
-  
+
   bool flag = false;
   void setval(val) async {
     await getinsta();
     print(await setvalue(val));
   }
 
-  
-
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
 
-    FlutterWebviewPlugin().dispose();
+    webviewPlugin.dispose();
   }
 
+  bool histval = false;
+  double val = 0.0;
   @override
   Widget build(BuildContext context) {
-    // double val;
+    webviewPlugin.onProgressChanged.listen(
+      (event) {
+        if (val != 1.0) {
+          setState(() {
+            val = event;
+          });
+        } else {
+          val = 0.0;
+          
+        }
+        print(val);
+      },
+    );
+
+    webviewPlugin.onUrlChanged.listen(
+      (event) {
+        if (!histval) {
+          print('vs');
+          setval(event);
+          histval = true;
+        }
+      },
+    );
 
     args = ModalRoute.of(context).settings.arguments;
-    
+
     print(args);
-    // FlutterWebviewPlugin().onProgressChanged.listen((event) {
+    // webviewPlugin.onProgressChanged.listen((event) {
     //   setState(() {
     //      val = event;
     //   });
 
     // });
-    
+
     return WebviewScaffold(
       enableAppScheme: true,
       geolocationEnabled: true,
@@ -60,12 +84,11 @@ class _TabsState extends State<Tabs> {
           index = value;
           if (index == 1) {
             setState(() {
-              FlutterWebviewPlugin().reload();
+              webviewPlugin.reload();
             });
           } else {
             setState(() {
-              FlutterWebviewPlugin()
-                  .reloadUrl('https://www.google.com/search?-b-d&q=');
+              webviewPlugin.reloadUrl('https://www.google.com/search?-b-d&q=');
             });
           }
         },
@@ -82,9 +105,11 @@ class _TabsState extends State<Tabs> {
       scrollBar: true,
       supportMultipleWindows: true,
       appBar: AppBar(
-        // bottom: PreferredSize(child: LinearProgressIndicator(
-        //   value:,
-        // ), preferredSize: Size.fromHeight(10)),
+        bottom: PreferredSize(
+            child: LinearProgressIndicator(
+              value: val,
+            ),
+            preferredSize: Size.fromHeight(10)),
         actions: <Widget>[
           RaisedButton(
               color: Colors.purple,
@@ -92,25 +117,24 @@ class _TabsState extends State<Tabs> {
                 // setState(() {
                 if (controller.text.length > 7) {
                   // if ((controller.text.substring(0, 8) != 'https://')&&(!controller.text.contains('.com'))) {
-                  //   FlutterWebviewPlugin()
+                  //   webviewPlugin
                   //       .reloadUrl('https://' + controller.text);
                   // }
                   if ((controller.text.contains('.com')) &&
                       (controller.text.substring(0, 8) != 'https://')) {
-                    FlutterWebviewPlugin()
-                        .reloadUrl('https://' + controller.text);
+                    webviewPlugin.reloadUrl('https://' + controller.text);
 
                     urls = 'https://' + controller.text;
                     addrecord(st: controller.text);
                     setval(urls);
                   } else if ((controller.text.contains('.com')) &&
                       (controller.text.substring(0, 8) == 'https://')) {
-                    FlutterWebviewPlugin().reloadUrl(controller.text);
+                    webviewPlugin.reloadUrl(controller.text);
                     urls = controller.text;
                     setval(urls);
                     addrecord(st: controller.text);
                   } else {
-                    FlutterWebviewPlugin().reloadUrl(
+                    webviewPlugin.reloadUrl(
                         'https://www.google.com/search?-b-d&q=' +
                             controller.text);
                     urls = 'https://www.google.com/search?-b-d&q=' +
@@ -119,7 +143,7 @@ class _TabsState extends State<Tabs> {
                     addrecord(st: controller.text);
                   }
                 } else {
-                  FlutterWebviewPlugin().reloadUrl(
+                  webviewPlugin.reloadUrl(
                       'https://www.google.com/search?-b-d&q=' +
                           controller.text);
                   urls =
@@ -140,23 +164,23 @@ class _TabsState extends State<Tabs> {
           onEditingComplete: () {
             if (controller.text.length > 7) {
               // if ((controller.text.substring(0, 8) != 'https://')&&(!controller.text.contains('.com'))) {
-              //   FlutterWebviewPlugin()
+              //   webviewPlugin
               //       .reloadUrl('https://' + controller.text);
               // }
               if ((controller.text.contains('.com')) &&
                   (controller.text.substring(0, 8) != 'https://')) {
-                FlutterWebviewPlugin().reloadUrl('https://' + controller.text);
+                webviewPlugin.reloadUrl('https://' + controller.text);
                 urls = 'https://' + controller.text;
                 setval(urls);
                 addrecord(st: controller.text);
               } else if ((controller.text.contains('.com')) &&
                   (controller.text.substring(0, 8) == 'https://')) {
-                FlutterWebviewPlugin().reloadUrl(controller.text);
+                webviewPlugin.reloadUrl(controller.text);
                 urls = controller.text;
                 setval(urls);
                 addrecord(st: controller.text);
               } else {
-                FlutterWebviewPlugin().reloadUrl(
+                webviewPlugin.reloadUrl(
                     'https://www.google.com/search?-b-d&q=' + controller.text);
                 addrecord(st: controller.text);
                 urls =
@@ -164,7 +188,7 @@ class _TabsState extends State<Tabs> {
                 setval(urls);
               }
             } else {
-              FlutterWebviewPlugin().reloadUrl(
+              webviewPlugin.reloadUrl(
                   'https://www.google.com/search?-b-d&q=' + controller.text);
               urls = 'https://www.google.com/search?-b-d&q=' + controller.text;
               setval(urls);

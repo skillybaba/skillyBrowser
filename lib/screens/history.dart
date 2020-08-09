@@ -82,15 +82,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
             SliverList(delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
               double i = 120;
-
+              
               if ((index < list.length) &&
                   (!list[index].contains('www.') &&
                       (!list[index].contains('.com')) &&
                       (!list[index].contains('https://')) &&
                       (list[index].substring(37).length > 20))) {
-                i = 30;
+                i = 10;
               } else {
-                i = 100;
+                i = 10;
               }
               if (index < list.length) {
                 return Container(

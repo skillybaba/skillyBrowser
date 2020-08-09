@@ -24,19 +24,19 @@ class _UrlboxState extends State<Urlbox> {
           var a;
 
           if (url.text.contains('https://')) {
-            await getinsta();
-            a = await setvalue(url.text.toString());
+            // await getinsta();
+            // a = await setvalue(url.text.toString());
             Navigator.pushNamed(context, '/tabs', arguments: {'url': url.text});
           } else if (url.text.contains('.com')) {
-            await getinsta();
-            a = await setvalue("https://" + url.text.toString());
+            // await getinsta();
+            // a = await setvalue("https://" + url.text.toString());
             Navigator.pushNamed(context, '/tabs',
                 arguments: {'url': "https://" + url.text});
           } else {
-            await getinsta();
-            a = await setvalue(
+            // await getinsta();
+            // a = await setvalue(
 
-                "https://www.google.com/search?-b-d&q=" + url.text.toString());
+            //     "https://www.google.com/search?-b-d&q=" + url.text.toString());
             Navigator.pushNamed(context, '/tabs', arguments: {
               'url': "https://www.google.com/search?-b-d&q=" + url.text
             });
