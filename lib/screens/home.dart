@@ -15,6 +15,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var news;
+  final GlobalKey<ScaffoldState> state = GlobalKey<ScaffoldState>();
+
   TextEditingController url = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -27,9 +29,61 @@ class _HomeState extends State<Home> {
           Offset(0, 0) //enabled value
         ],
         child: Scaffold(
+            key: state,
             drawer: Drawer(
-              child: Center(child: Text("COMING SOON MORE")),
-            ),
+                child: Container(
+              color: Color(0xff00011f),
+              child: ListView(
+                children: [
+                  Container(
+                    child: DrawerHeader(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.elliptical(30, 40),
+                              bottomRight: Radius.elliptical(30, 40)),
+                          color: CupertinoColors.systemPurple,
+                        ),
+                        padding: EdgeInsets.only(
+                            top: 100, bottom: 4, left: 20, right: 20),
+                        child: Text(
+                          'Skilly Browser',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 30),
+                        )),
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  FlatButton.icon(
+                    highlightColor: Colors.deepPurple,
+                    padding: EdgeInsets.only(top: 40, bottom: 40),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/Camera');
+                    },
+                    icon: Icon(
+                      Icons.camera,
+                      color: CupertinoColors.systemPurple,
+                      size: 20,
+                    ),
+                    label: Text(
+                      "Skilly Scanner",
+                      style: TextStyle(
+                          fontSize: 20, color: CupertinoColors.systemPurple),
+                    ),
+                  ),
+                ],
+              ),
+            )),
+            //     child: FlatButton.icon(
+            //   onPressed: () {
+            //     Navigator.pushNamed(context, '/Camera');
+            //   },
+            //   icon: Icon(Icons.camera),
+            //   label: Text("Skilly Scanner"),
+            // )),
+
             backgroundColor: Color(0xff00011f),
             appBar: AppBar(
               shape: RoundedRectangleBorder(
@@ -46,7 +100,9 @@ class _HomeState extends State<Home> {
               backgroundColor: CupertinoColors.systemPurple,
               centerTitle: true,
               leading: FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  state.currentState.openDrawer();
+                },
                 child: Container(
                     child: Icon(
                   Icons.table_chart,
