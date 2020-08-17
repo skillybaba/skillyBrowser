@@ -41,6 +41,8 @@ class _CameraScreenState extends State<CameraScreen> {
                       style: TextStyle(color: Colors.white, fontSize: 18)))
               : Image.file(
                   file,
+                  height: 360,
+                width:200,
                 ),
           Container(
               height: 70,

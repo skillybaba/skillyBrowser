@@ -23,19 +23,9 @@ class _TabsState extends State<Tabs> {
     await getinsta();
     print(await setvalue(val));
   }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-
-    webviewPlugin.dispose();
-  }
-
-  bool histval = false;
-  double val = 0.0;
-  @override
-  Widget build(BuildContext context) {
+  void initState()
+  {
+    super.initState();
     webviewPlugin.onProgressChanged.listen(
       (event) {
         if (val != 1.0) {
@@ -49,7 +39,6 @@ class _TabsState extends State<Tabs> {
         print(val);
       },
     );
-
     webviewPlugin.onUrlChanged.listen(
       (event) {
         if (!histval) {
@@ -60,6 +49,23 @@ class _TabsState extends State<Tabs> {
       },
     );
 
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+
+    webviewPlugin.dispose();
+  }
+
+  bool histval = false;
+  double val = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    
+
+    
     args = ModalRoute.of(context).settings.arguments;
 
     print(args);
