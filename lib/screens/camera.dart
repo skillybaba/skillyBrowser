@@ -11,7 +11,6 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class CameraScreen extends StatefulWidget {
   @override
   _CameraScreenState createState() => _CameraScreenState();
@@ -19,9 +18,11 @@ class CameraScreen extends StatefulWidget {
 
 class _CameraScreenState extends State<CameraScreen> {
   File file;
+  List<File> filelist = [];
   var picker = ImagePicker();
   var pdf = pw.Document();
   var image1;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +43,7 @@ class _CameraScreenState extends State<CameraScreen> {
               : Image.file(
                   file,
                   height: 360,
-                width:200,
+                  width: 200,
                 ),
           Container(
               height: 70,
@@ -78,9 +79,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     print('done');
                     Navigator.popAndPushNamed(context, '/PDF', arguments: {
                       'path': '$appDocPath/$name',
-                    }
-                    );
-                  
+                    });
                   } catch (e) {
                     print(e);
                   }
@@ -114,6 +113,8 @@ class _CameraScreenState extends State<CameraScreen> {
                 backgroundColor: Colors.grey,
                 lockAspectRatio: false,
               ));
+          
+         
           setState(() {
             file = crop;
             image1 = PdfImage.file(

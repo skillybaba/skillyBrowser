@@ -9,7 +9,8 @@ import './screens/history.dart';
 import './screens/loading.dart';
 import './screens/camera.dart';
 import './screens/pdfview.dart';
-
+import './screens/privacyprolicy.dart';
+import './screens/aboutus.dart';
 void main() {
   runApp(MaterialApp(
     
@@ -23,6 +24,8 @@ void main() {
       '/histroy': (context) => HistoryScreen(),
       '/Camera': (context) => CameraScreen(),
       '/PDF': (context) => PDFViewer(),
+      '/Privacy':(context) => Privacy(),
+      '/AboutUs' : (context) => AboutUs(),
     },
   ));
 }

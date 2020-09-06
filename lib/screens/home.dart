@@ -33,44 +33,83 @@ class _HomeState extends State<Home> {
             drawer: Drawer(
                 child: Container(
               color: Color(0xff00011f),
-              child: ListView(
+              child: Column(
                 children: [
                   Container(
+                   
                     child: DrawerHeader(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.elliptical(30, 40),
-                              bottomRight: Radius.elliptical(30, 40)),
+                          
                           color: CupertinoColors.systemPurple,
                         ),
                         padding: EdgeInsets.only(
-                            top: 100, bottom: 4, left: 20, right: 20),
+                            top: 100, bottom: 4,left: 71,right: 71 ),
                         child: Text(
                           'Skilly Browser',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
-                              fontSize: 30),
+                              fontSize: 25),
                         )),
                   ),
                   SizedBox(
                     height: 4,
                   ),
-                  FlatButton.icon(
-                    highlightColor: Colors.deepPurple,
-                    padding: EdgeInsets.only(top: 40, bottom: 40),
+                 RaisedButton.icon(
+                   color: CupertinoColors.systemPurple,
+                   padding: EdgeInsets.all(20),
                     onPressed: () {
                       Navigator.pushNamed(context, '/Camera');
                     },
                     icon: Icon(
                       Icons.camera,
-                      color: CupertinoColors.systemPurple,
+                      color: CupertinoColors.white,
                       size: 20,
                     ),
                     label: Text(
                       "Skilly Scanner",
                       style: TextStyle(
-                          fontSize: 20, color: CupertinoColors.systemPurple),
+                          fontSize: 20, color: CupertinoColors.white),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  RaisedButton.icon(
+                   color: CupertinoColors.systemPurple,
+                   padding: EdgeInsets.all(20),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/Privacy');
+                    },
+                    icon: Icon(
+                      Icons.policy,
+                      color: CupertinoColors.white,
+                      size: 20,
+                    ),
+                    label: Text(
+                      "Privacy Policy",
+                      style: TextStyle(
+                          fontSize: 20, color: CupertinoColors.white),
+                    ),
+                  ),
+                   SizedBox(
+                    height: 10,
+                  ),
+                  RaisedButton.icon(
+                   color: CupertinoColors.systemPurple,
+                   padding: EdgeInsets.all(20),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/AboutUs');
+                    },
+                    icon: Icon(
+                      Icons.pageview,
+                      color: CupertinoColors.white,
+                      size: 20,
+                    ),
+                    label: Text(
+                      "About Us",
+                      style: TextStyle(
+                          fontSize: 20, color: CupertinoColors.white),
                     ),
                   ),
                 ],
