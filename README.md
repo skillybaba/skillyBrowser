@@ -2,7 +2,7 @@
 <img src = "https://github.com/kanzd/imag/blob/master/SKILLY%20(2).png" width="30%" >
 One of the fastest browser of the world.
 
-try it out from Google Play store [Skilly_Browser] (https://play.google.com/store/apps/details?id=com.skillybaba.skillybrowser)
+try it out from Google Play store [Skilly_Browser](https://play.google.com/store/apps/details?id=com.skillybaba.skillybrowser)
 
 
 ## Preview
