@@ -11,21 +11,21 @@ try it out from Google Play store [Skilly_Browser] (https://play.google.com/stor
 
 ### Major Dependency Used
 
-1. [Flutter WebView Plugin] (https://pub.dev/packages/flutter_webview_plugin)
+1. [Flutter WebView Plugin](https://pub.dev/packages/flutter_webview_plugin)
 
-1. [Animated FlotingAction Button] (https://pub.dev/packages/animated_floatactionbuttons)
+1. [Animated FlotingAction Button](https://pub.dev/packages/animated_floatactionbuttons)
 
-1. [Flutter SpinKit] (https://pub.dev/packages/flutter_spinkit)
+1. [Flutter SpinKit](https://pub.dev/packages/flutter_spinkit)
 
-1. [Image_picker] (https://pub.dev/packages/image_picker)
+1. [Image_picker](https://pub.dev/packages/image_picker)
 
-1. [Image_croper] (https://pub.dev/packages/image_cropper)
+1. [Image_croper](https://pub.dev/packages/image_cropper)
 
-1. [PDF] (https://pub.dev/packages/pdf)
+1. [PDF](https://pub.dev/packages/pdf)
 
-1. [Flutter PDF viewer] (https://pub.dev/packages/flutter_full_pdf_viewer)
+1. [Flutter PDF viewer](https://pub.dev/packages/flutter_full_pdf_viewer)
 
-1. [ShareExtend] (https://pub.dev/packages/share_extend)
+1. [ShareExtend](https://pub.dev/packages/share_extend)
 
 
 <a href="https://www.buymeacoffee.com/gbraad" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
