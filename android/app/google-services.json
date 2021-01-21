@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "662989073826",
+    "project_id": "skillybrowser",
+    "storage_bucket": "skillybrowser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662989073826:android:3646d0a7fb821d548996fb",
+        "android_client_info": {
+          "package_name": "com.skillybaba.skillybrowser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662989073826-vq9s77eqicj2s8cad673p9gm439pog7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skillybaba.skillybrowser",
+            "certificate_hash": "bf864af2be551366317252c21f720ee27edd0700"
+          }
+        },
+        {
+          "client_id": "662989073826-orldtfce505ltpttmhfic29jlh7eo0qe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAocIxcL2yuTCuACk6lkchFOl3f3dFPVN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662989073826-orldtfce505ltpttmhfic29jlh7eo0qe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
