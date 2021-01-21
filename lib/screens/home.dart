@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     news = ModalRoute.of(context).settings.arguments;
+    
     return TranslationAnimatedWidget(
         enabled: true, //update this boolean to forward/reverse the animation
         values: [
@@ -29,11 +30,13 @@ class _HomeState extends State<Home> {
           Offset(0, 0) //enabled value
         ],
         child: Scaffold(
+          
             key: state,
             drawer: Drawer(
                 child: Container(
-              color: Color(0xff00011f),
-              child: Column(
+                  color: Color(0xff00011f),
+            
+              child: ListView(
                 children: [
                   Container(
                    
@@ -52,66 +55,55 @@ class _HomeState extends State<Home> {
                               fontSize: 25),
                         )),
                   ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                 RaisedButton.icon(
-                   color: CupertinoColors.systemPurple,
-                   padding: EdgeInsets.all(20),
-                    onPressed: () {
+                 
+                ListTile(
+                  
+                  leading: Icon(Icons.camera,color: Colors.white,),
+                    onTap: () {
                       Navigator.pushNamed(context, '/Camera');
                     },
-                    icon: Icon(
-                      Icons.camera,
-                      color: CupertinoColors.white,
-                      size: 20,
-                    ),
-                    label: Text(
+                  subtitle: Text("Make Pdfs",style: TextStyle(
+                           color: CupertinoColors.white),),
+                    title: Text(
                       "Skilly Scanner",
                       style: TextStyle(
                           fontSize: 20, color: CupertinoColors.white),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  RaisedButton.icon(
-                   color: CupertinoColors.systemPurple,
-                   padding: EdgeInsets.all(20),
-                    onPressed: () {
+                  ListTile(leading: Hero(child: Icon(Icons.meeting_room,color: Colors.white,),tag: "Conf",),title: Text("Skilly Meet",style:TextStyle(
+                          fontSize: 20, color: CupertinoColors.white),
+                    ),subtitle: Text("Group Conference calling",style: TextStyle(
+                           color: CupertinoColors.white) ,),onTap: (){
+                    Navigator.pushNamed(context, "/Conference");
+                  },),
+               ListTile(
+                 leading: Icon(Icons.policy,color:Colors.white),
+                    onTap: () {
                       Navigator.pushNamed(context, '/Privacy');
                     },
-                    icon: Icon(
-                      Icons.policy,
-                      color: CupertinoColors.white,
-                      size: 20,
-                    ),
-                    label: Text(
+                  subtitle: Text("Our Policy",style: TextStyle(
+                           color: CupertinoColors.white),),
+                    title: Text(
                       "Privacy Policy",
                       style: TextStyle(
                           fontSize: 20, color: CupertinoColors.white),
                     ),
                   ),
-                   SizedBox(
-                    height: 10,
-                  ),
-                  RaisedButton.icon(
-                   color: CupertinoColors.systemPurple,
-                   padding: EdgeInsets.all(20),
-                    onPressed: () {
+                   
+                ListTile(
+                  leading: Icon(Icons.pageview,color: Colors.white,),
+                    onTap: () {
                       Navigator.pushNamed(context, '/AboutUs');
                     },
-                    icon: Icon(
-                      Icons.pageview,
-                      color: CupertinoColors.white,
-                      size: 20,
-                    ),
-                    label: Text(
+                   subtitle: Text("About our Applicaiton",style: TextStyle(
+                           color: CupertinoColors.white),),
+                    title: Text(
                       "About Us",
                       style: TextStyle(
                           fontSize: 20, color: CupertinoColors.white),
                     ),
                   ),
+                 
                 ],
               ),
             )),
