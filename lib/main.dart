@@ -11,6 +11,9 @@ import './screens/camera.dart';
 import './screens/pdfview.dart';
 import './screens/privacyprolicy.dart';
 import './screens/aboutus.dart';
+import './screens/meethistory.dart';
+import "./screens/confrence.dart";
+import "./screens/meetingsettings.dart";
 void main() {
   runApp(MaterialApp(
     
@@ -26,6 +29,9 @@ void main() {
       '/PDF': (context) => PDFViewer(),
       '/Privacy':(context) => Privacy(),
       '/AboutUs' : (context) => AboutUs(),
+      "/Conference":(context) => Conference(),
+      "/MeetingHistory":(context)=>MeetingHistory(),
+      "/MeetingSettings":(context)=>MeetingSettings(),
     },
   ));
 }

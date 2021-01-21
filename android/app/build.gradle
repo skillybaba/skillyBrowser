@@ -46,8 +46,8 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.skillybaba.skillybrowser"
-        minSdkVersion 16
-        targetSdkVersion 30
+        minSdkVersion 23
+        targetSdkVersion 28
         versionCode 5
         versionName "1.1.1"
         multiDexEnabled true
@@ -64,6 +64,9 @@ android {
    buildTypes {
        release {
            signingConfig signingConfigs.release
+            minifyEnabled true
+        useProguard true
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
        }
    }
     // buildTypes {

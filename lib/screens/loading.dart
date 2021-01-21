@@ -22,6 +22,6 @@ class _LoadingState extends State<Loading> {
   Widget build(BuildContext context) {
     getnews();
     return Container(
-        child: Center(child: SpinKitPouringHourglass(size:30,color:CupertinoColors.systemPurple)));
+        child: Center(child:  SpinKitSquareCircle(size:30,color:CupertinoColors.systemPurple)));
   }
 }
