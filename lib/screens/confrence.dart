@@ -46,6 +46,7 @@ class _ConferenceState extends State<Conference> {
        
       this.setState(() {
         this.auth=true;
+        checkAuth();
        
       });
     });
