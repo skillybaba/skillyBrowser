@@ -27,9 +27,12 @@ In 1968, Council of Europe did studies on the threat of the Internet expansion a
 This marks the start of what we know now as a "Privacy Policy." While the name "Privacy Policy" refers to the legal agreement, the concept of privacy and protecting user data is closely related. 
 
 •	Permissions:- Camera Permission
+•	Permissions:- Microphone Permission
 
 
 We store the information of what you surf on the web for the record purpose
+
+We store login information on Skilly-Meet
 
  ''',
             style: TextStyle(color: Colors.white),
