@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skillybrowser/models/user.dart';
 import "./subscreens/login.dart";
 import 'dart:math';
+import 'package:share/share.dart';
+import 'package:clipboard/clipboard.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import "../services/conferenceservice.dart";
 class Conference extends StatefulWidget {
@@ -125,14 +127,32 @@ class _ConferenceState extends State<Conference> {
                 fontSize: 20,
               ),
             ),
-            onPressed: () {
+            onPressed: ()async {
+              this.name.text="";
+              String roomid=Random().nextInt(10000).toString();
+              SharedPreferences pref = await SharedPreferences.getInstance();
+               var info =  pref.getStringList("info");
               showDialog(context: context,builder: (context){
                 return AlertDialog(actions: [
-                  FlatButton.icon(onPressed: () async {
-                     SharedPreferences pref = await SharedPreferences.getInstance();
-                     var info =  pref.getStringList("info");
-                     Navigator.pop(context);
-              ConferenceService(name:info[0],number: info[1],docid: info[2],roomid:Random().nextInt(10000).toString()).hostMeeting();
+                  FlatButton.icon(color: CupertinoColors.systemPurple,onPressed: () {
+                         Navigator.pop(context);
+                         this.name.text="No Name";
+                    showDialog(context: context,builder: (context){
+                      return AlertDialog(title: Text("Your Info"),content: Container(child:ListView(children: [
+                        ListTile(subtitle: Text("Your Room Id"),leading: Icon(Icons.perm_identity),title: Text(roomid),),
+                        ListTile(subtitle: Text("Host Name"),leading: Icon(Icons.meeting_room_rounded),title:Text(info[0]??this.name.text)),
+                      ],),height:130),actions: [IconButton(color: CupertinoColors.systemPurple,icon: Icon(Icons.share),onPressed: (){
+                        Share.share("""HOST-NAME : ${info[0]??this.name.text} 
+ROOM-ID : ${roomid}
+                        """);
+                      },),FlatButton.icon(color: CupertinoColors.systemPurple,onPressed: (){
+                          Navigator.pop(context);
+              ConferenceService(name:info[0]??this.name.text,number: info[1],docid: info[2],roomid:roomid).hostMeeting();
+                      }, icon: Icon(Icons.arrow_right), label: Text("Next"))],);
+                    });
+                     
+                
+                   
                   }, icon: Icon(Icons.arrow_right), label: Text("Next"))
                 ],title:Text("Host A Meeting"),content: Container(child:
                   TextField(controller: this.name,decoration: InputDecoration(labelText: " Name (Optional)",border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),))
