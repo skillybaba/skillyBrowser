@@ -32,7 +32,9 @@ This marks the start of what we know now as a "Privacy Policy." While the name "
 
 We store the information of what you surf on the web for the record purpose
 
-We store login information on Skilly-Meet
+We store login information on Skilly-Meet and Global Chat pannel
+
+we store global chat information.
 
  ''',
             style: TextStyle(color: Colors.white),
