@@ -38,6 +38,7 @@ class _GlobalChatState extends State<GlobalChat> {
   bool first = false;
   StreamSubscription<QuerySnapshot> snap;
   void getChats() async {
+    this.loading=true;
     await Firebase.initializeApp();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     var collection = firestore.collection("message");
@@ -61,7 +62,7 @@ class _GlobalChatState extends State<GlobalChat> {
 
         });
         setState(() {
-          
+          this.loading=false;
         });
         this.first = true;
       } else {
