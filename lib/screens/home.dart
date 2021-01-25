@@ -76,6 +76,12 @@ class _HomeState extends State<Home> {
                            color: CupertinoColors.white) ,),onTap: (){
                     Navigator.pushNamed(context, "/Conference");
                   },),
+                   ListTile(leading: Hero(child: Icon(Icons.chat_bubble,color: Colors.white,),tag: "Chat",),title: Text("Global Chat",style:TextStyle(
+                          fontSize: 20, color: CupertinoColors.white),
+                    ),subtitle: Text("Global Community Chat",style: TextStyle(
+                           color: CupertinoColors.white) ,),onTap: (){
+                    Navigator.pushNamed(context, "/GlobalChat");
+                  },),
                ListTile(
                  leading: Icon(Icons.policy,color:Colors.white),
                     onTap: () {

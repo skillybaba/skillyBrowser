@@ -1,12 +1,9 @@
-import 'package:skillybrowser/services/history.dart';
 import './screens/home.dart';
 import './screens/loading.dart';
 import './screens/news.dart';
 import './screens/tabs.dart';
-import './screens/news.dart';
 import 'package:flutter/material.dart';
 import './screens/history.dart';
-import './screens/loading.dart';
 import './screens/camera.dart';
 import './screens/pdfview.dart';
 import './screens/privacyprolicy.dart';
@@ -14,6 +11,7 @@ import './screens/aboutus.dart';
 import './screens/meethistory.dart';
 import "./screens/confrence.dart";
 import "./screens/meetingsettings.dart";
+import "./screens/globalchat.dart";
 void main() {
   runApp(MaterialApp(
     
@@ -32,6 +30,7 @@ void main() {
       "/Conference":(context) => Conference(),
       "/MeetingHistory":(context)=>MeetingHistory(),
       "/MeetingSettings":(context)=>MeetingSettings(),
+      "/GlobalChat":(context)=>GlobalChat(),
     },
   ));
 }

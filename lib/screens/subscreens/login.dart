@@ -8,9 +8,11 @@ import "package:skillybrowser/services/firebase.dart";
 
 class Login extends StatefulWidget {
   var next;
-  Login({key,next}):super(key: key)
+  var type="Meet";
+  Login({key,next,type="Meet"}):super(key: key)
   {
     this.next=next;
+    this.type=type;
 
   }
   @override
@@ -34,7 +36,7 @@ class _LoginState extends State<Login> {
  
      
     },),
-      appBar: AppBar(backgroundColor: CupertinoColors.systemPurple,title: Text("Skilly Meet Login"),
+      appBar: AppBar(backgroundColor: CupertinoColors.systemPurple,title: Text(widget.type=="Meet"?"Skilly Meet Login":"Global Chat Login"),
 
     
       ),
