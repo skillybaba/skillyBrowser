@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skillybrowser/models/user.dart';
 import "./subscreens/login.dart";
 import 'dart:math';
 import 'package:share/share.dart';
-import 'package:clipboard/clipboard.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import "../services/conferenceservice.dart";
 class Conference extends StatefulWidget {

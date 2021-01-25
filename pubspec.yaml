@@ -50,9 +50,9 @@ dependencies:
   cloud_firestore: ^0.14.0+2
   firebase_analytics: ^6.0.0
   country_code_picker: ^1.7.0
-  fluttertoast: ^7.1.6
-  clipboard: ^0.1.2+8
   share: ^0.6.5+4
+  dash_chat: ^1.1.15
+  loading_overlay: ^0.2.1
 
 dev_dependencies:
   flutter_test:

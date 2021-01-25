@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:skillybrowser/models/user.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import "package:skillybrowser/services/firebase.dart";
 
 class Login extends StatefulWidget {
   var next;
-  Login({key,next}):super(key: key)
+  var type="Meet";
+  Login({key,next,type="Meet"}):super(key: key)
   {
     this.next=next;
+    this.type=type;
 
   }
   @override
@@ -34,7 +33,7 @@ class _LoginState extends State<Login> {
  
      
     },),
-      appBar: AppBar(backgroundColor: CupertinoColors.systemPurple,title: Text("Skilly Meet Login"),
+      appBar: AppBar(backgroundColor: CupertinoColors.systemPurple,title: Text(widget.type=="Meet"?"Skilly Meet Login":"Global Chat Login"),
 
     
       ),
