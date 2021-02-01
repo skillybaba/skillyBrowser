@@ -11,7 +11,9 @@ and in near future we are gona add more to it also.
 
 ## Preview
 
-<img src = "https://github.com/kanzd/imag/blob/master/SKILLY%20(1).jpeg" width="30%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = "https://github.com/kanzd/imag/blob/master/SKILLY%20(2).jpeg" width="30%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = "https://github.com/kanzd/imag/blob/master/SKILLY%20(3).jpeg" width="30%" >
+<img src = "https://github.com/kanzd/imag/blob/master/SKILLY%20(1).jpeg" width="30%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = "https://github.com/kanzd/imag/blob/master/SKILLY%20(2).jpeg" width="30%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = "https://github.com/kanzd/imag/blob/master/SKILLY%20(3).jpeg" width="30%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = "https://github.com/skillybaba/skillyBrowser/blob/master/ss/WhatsApp%20Image%202021-02-01%20at%206.51.09%20PM(1).jpeg" width="30%" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = "https://github.com/skillybaba/skillyBrowser/blob/master/ss/WhatsApp%20Image%202021-02-01%20at%206.51.09%20PM(2).jpeg" width="30%" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = "https://github.com/skillybaba/skillyBrowser/blob/master/ss/WhatsApp%20Image%202021-02-01%20at%206.51.09%20PM.jpeg" width="30%" >
 
 ### Major Dependency Used
 
