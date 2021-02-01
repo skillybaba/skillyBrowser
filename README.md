@@ -27,5 +27,15 @@ try it out from Google Play store [Skilly_Browser](https://play.google.com/store
 
 1. [ShareExtend](https://pub.dev/packages/share_extend)
 
+1. [Jitsi Meet](https://pub.dev/packages/jitsi_meet/versions/0.4.2)
+
+1. [Firebase Storage](https://pub.dev/packages/firebase_storage)
+
+1. [Firebase Auth](https://pub.dev/packages/firebase_auth/versions)
+
+1. [Cloud Firestore](https://pub.dev/packages/cloud_firestore/versions/0.14.0+2)
+
+1. [Dash Chat](https://pub.dev/packages/dash_chat)
+
 
 <a href="https://www.buymeacoffee.com/gbraad" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
