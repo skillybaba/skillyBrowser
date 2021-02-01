@@ -6,7 +6,7 @@ try it out from Google Play store [Skilly_Browser](https://play.google.com/store
 
 ## APK LINK 2.0(Not Avalable at google play due to some issue but we are trying to fix it asap)
 
-[Skilly Browser 2.0 APK](https://pub.dev/packages/flutter_webview_plugin)
+[Skilly Browser 2.0 APK](https://drive.google.com/file/d/1YO3wYJjVFKowbU4Vpc_Yte0lYvUXbeU-/view?usp=sharing)
 
 ## About
 This is a super application with features like internet browsing,conference calling,pdf scanner,gobal chat pannel.
