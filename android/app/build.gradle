@@ -47,8 +47,8 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.skillybaba.skillybrowser"
         minSdkVersion 23
-        targetSdkVersion 28
-        versionCode 5
+        targetSdkVersion 29
+        versionCode 6
         versionName "2.0.0"
         multiDexEnabled true
     }
