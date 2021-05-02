@@ -17,80 +17,83 @@ class FirebaseService {
   }
   static bool authDone = false;
   static DocumentReference doc;
-  static meetingStore({String roomid,String hostnumber,String hostdocid}) async{
+  static meetingStore(
+      {String roomid, String hostnumber, String hostdocid}) async {
     await Firebase.initializeApp();
 
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     var doc = firestore.doc(hostdocid);
 
     doc.collection('meetings').add({
-      'roomid':roomid,
-      "hostname":hostnumber,
+      'roomid': roomid,
+      "hostname": hostnumber,
     });
     var doc2 = firestore.collection("meetings");
     doc2.add({
-      'roomid':roomid,
-      "hostname":hostnumber,
+      'roomid': roomid,
+      "hostname": hostnumber,
     });
-
-
   }
-  static checkRoom(roomid) async
-  {
+
+  static checkRoom(roomid) async {
     await Firebase.initializeApp();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     var doc = firestore.collection('meetings');
-    var checkRoom  = await doc.where("roomid",isEqualTo:roomid).get();
-    if(checkRoom.docs.length>0)
-    {
+    var checkRoom = await doc.where("roomid", isEqualTo: roomid).get();
+    if (checkRoom.docs.length > 0) {
       return true;
     }
     return false;
   }
-  static void changeName(docid,name) async{
+
+  static void changeName(docid, name) async {
     await Firebase.initializeApp();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     var doc = firestore.doc(docid);
-    doc.update({'name':name});
+    doc.update({'name': name});
   }
-  static Future<List<QueryDocumentSnapshot>> getMeetings(docid) async
-  {
-    await  Firebase.initializeApp();
+
+  static Future<List<QueryDocumentSnapshot>> getMeetings(docid) async {
+    await Firebase.initializeApp();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     var doc = firestore.doc(docid).collection('meetings');
     var list = await doc.get();
     return list.docs;
   }
+
   static auth(
       {String name, String phonenumber, String route, context, next}) async {
     TextEditingController controller = TextEditingController();
     await Firebase.initializeApp();
     FirebaseAuth auth = FirebaseAuth.instance;
+    bool val = false;
     await auth.verifyPhoneNumber(
         phoneNumber: phonenumber,
         verificationCompleted: (credential) async {
           var user = await auth.signInWithCredential(credential);
           if (user != null) {
-
             FirebaseFirestore firestore = FirebaseFirestore.instance;
             var collection = firestore.collection('users');
-            
+
             SharedPreferences pref = await SharedPreferences.getInstance();
-            var ref= await collection.where("number",isEqualTo:phonenumber).get();
-            if(ref.docs.length>0)
-            {
-              FirebaseService.doc=ref.docs.first.reference;
- await pref.setStringList("info", [ref.docs.first.data()['name'], phonenumber, FirebaseService.doc.path]);
+            var ref =
+                await collection.where("number", isEqualTo: phonenumber).get();
+            if (ref.docs.length > 0) {
+              FirebaseService.doc = ref.docs.first.reference;
+              await pref.setStringList("info", [
+                ref.docs.first.data()['name'],
+                phonenumber,
+                FirebaseService.doc.path
+              ]);
+            } else {
+              FirebaseService.doc = await collection.add({
+                "number": phonenumber,
+                "name": name,
+              });
+              await pref.setStringList(
+                  "info", [name, phonenumber, FirebaseService.doc.path]);
             }
-            else
-            {
-            FirebaseService.doc = await collection.add({
-              "number": phonenumber,
-              "name": name,
-            });
-            await pref.setStringList("info", [name, phonenumber, FirebaseService.doc.path]);
-            }
-            Navigator.pop(context);
+            if (val) Navigator.pop(context);
             next(FirebaseService.doc);
           } else
             Alert(context: context, title: "Error", type: AlertType.error)
@@ -104,6 +107,7 @@ class FirebaseService {
               .show();
         },
         codeSent: (String verfication, int token) {
+          val = true;
           showDialog(
               context: context,
               builder: (context) => AlertDialog(
@@ -126,22 +130,27 @@ class FirebaseService {
 
                               SharedPreferences pref =
                                   await SharedPreferences.getInstance();
-                                   var ref= await collection.where("number",isEqualTo:phonenumber).get();
-            if(ref.docs.length>0)
-            {
-              FirebaseService.doc=ref.docs.first.reference;
- await pref.setStringList("info", [ref.docs.first.data()['name'], phonenumber, FirebaseService.doc.path]);
-            }
-            else
-            {
-            FirebaseService.doc = await collection.add({
-              "number": phonenumber,
-              "name": name,
-            });
-            await pref.setStringList("info", [name, phonenumber, FirebaseService.doc.path]);
-            }
-
-                             
+                              var ref = await collection
+                                  .where("number", isEqualTo: phonenumber)
+                                  .get();
+                              if (ref.docs.length > 0) {
+                                FirebaseService.doc = ref.docs.first.reference;
+                                await pref.setStringList("info", [
+                                  ref.docs.first.data()['name'],
+                                  phonenumber,
+                                  FirebaseService.doc.path
+                                ]);
+                              } else {
+                                FirebaseService.doc = await collection.add({
+                                  "number": phonenumber,
+                                  "name": name,
+                                });
+                                await pref.setStringList("info", [
+                                  name,
+                                  phonenumber,
+                                  FirebaseService.doc.path
+                                ]);
+                              }
 
                               Navigator.pop(context);
                               next(FirebaseService.doc);

@@ -22,7 +22,7 @@ class _CameraScreenState extends State<CameraScreen> {
   var picker = ImagePicker();
   var pdf = pw.Document();
   var image1;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +63,8 @@ class _CameraScreenState extends State<CameraScreen> {
                     String name;
                     var prefs = await SharedPreferences.getInstance();
                     if (!await prefs.containsKey('name')) {
-                      await prefs.setString('name', 'yourfile0.pdf');
+                      await prefs.setString('name', 'yourfile1.pdf');
+                      name = 'yourfile1.pdf';
                     } else {
                       name = await prefs.getString('name');
                       int val = int.parse(name[8]);
@@ -113,8 +114,7 @@ class _CameraScreenState extends State<CameraScreen> {
                 backgroundColor: Colors.grey,
                 lockAspectRatio: false,
               ));
-          
-         
+
           setState(() {
             file = crop;
             image1 = PdfImage.file(

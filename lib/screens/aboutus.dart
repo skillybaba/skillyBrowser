@@ -24,9 +24,9 @@ class _AboutUsState extends State<AboutUs> {
                   Image.asset('images/Icon-72.png'),
                   SizedBox(height: 30,),
               Text(
-                '''Skilly Browser by Skillybaba 2020 Copyright
+                '''Skilly Browser by Skillybaba 2021 Copyright
 
-                           Version 2.0.0
+                           Version 2.0.1
              ''',
                 style: TextStyle(color: Colors.white),
               ),
