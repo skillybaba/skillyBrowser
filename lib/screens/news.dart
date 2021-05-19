@@ -62,7 +62,7 @@ class _NewsState extends State<News> {
                                     );
                                   },
                                   image: NetworkImage(
-                                      'http://skillybaba.pythonanywhere.com/' +
+                                      'https://skillybaba.pythonanywhere.com/' +
                                           news[news.length - 1 - index]
                                               ['image']))),
                           Container(

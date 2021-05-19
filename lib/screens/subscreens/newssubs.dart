@@ -67,7 +67,7 @@ class _NewsSubState extends State<NewsSub> {
                       );
                     },
                     image: NetworkImage(
-                        'http://skillybaba.pythonanywhere.com/' +
+                        'https://skillybaba.pythonanywhere.com/' +
                             news[news.length - 1]['image']),
                     height: 220,
                   ),
@@ -123,7 +123,7 @@ class _NewsSubState extends State<NewsSub> {
                       );
                     },
                     image: NetworkImage(
-                        'http://skillybaba.pythonanywhere.com/' +
+                        'https://skillybaba.pythonanywhere.com/' +
                             news[news.length - 2]['image']),
                     height: 220,
                   ),

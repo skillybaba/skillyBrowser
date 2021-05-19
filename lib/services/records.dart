@@ -17,7 +17,7 @@ addrecord({String st}) async {
     //   st = st.substring(13, st.length - 5);
     // }
     Response res = await get(
-        'http://skillybaba.pythonanywhere.com/skillybrowserapi/recordsgo/' +
+        'https://skillybaba.pythonanywhere.com/skillybrowserapi/recordsgo/' +
             st);
     print(jsonDecode(res.body));
 

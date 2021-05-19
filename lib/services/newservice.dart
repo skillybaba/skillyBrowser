@@ -7,7 +7,7 @@ class NewsService {
   Future<void> getNews() async {
     try {
       Response res = await get(
-          "http://skillybaba.pythonanywhere.com/skillybrowserapi/news/?format=json");
+          "https://skillybaba.pythonanywhere.com/skillybrowserapi/news/?format=json");
       news = jsonDecode(res.body);
       print(news);
       print('done');
