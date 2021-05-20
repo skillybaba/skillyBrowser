@@ -4,9 +4,9 @@ One of the fastest browser of the world.
 
 try it out from Google Play store [Skilly_Browser](https://play.google.com/store/apps/details?id=com.skillybaba.skillybrowser)
 
-## APK LINK 2
+## APK LINK
 
-[Skilly Browser 2 APK](https://drive.google.com/file/d/1YO3wYJjVFKowbU4Vpc_Yte0lYvUXbeU-/view?usp=sharing)
+[Skilly Browser APK](https://drive.google.com/file/d/1YO3wYJjVFKowbU4Vpc_Yte0lYvUXbeU-/view?usp=sharing)
 
 ## About
 This is a super application with features like internet browsing,conference calling,pdf scanner,gobal chat pannel.
