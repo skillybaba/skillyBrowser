@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     news = ModalRoute.of(context).settings.arguments;
-    
+
     return TranslationAnimatedWidget(
         enabled: true, //update this boolean to forward/reverse the animation
         values: [
@@ -30,23 +30,19 @@ class _HomeState extends State<Home> {
           Offset(0, 0) //enabled value
         ],
         child: Scaffold(
-          
             key: state,
             drawer: Drawer(
                 child: Container(
-                  color: Color(0xff00011f),
-            
+              color: Color(0xff00011f),
               child: ListView(
                 children: [
                   Container(
-                   
                     child: DrawerHeader(
                         decoration: BoxDecoration(
-                          
                           color: CupertinoColors.systemPurple,
                         ),
                         padding: EdgeInsets.only(
-                            top: 100, bottom: 4,left: 71,right: 71 ),
+                            top: 100, bottom: 4, left: 71, right: 71),
                         child: Text(
                           'Skilly Browser',
                           style: TextStyle(
@@ -55,61 +51,99 @@ class _HomeState extends State<Home> {
                               fontSize: 25),
                         )),
                   ),
-                 
-                ListTile(
-                  
-                  leading: Icon(Icons.camera,color: Colors.white,),
+                  ListTile(
+                    leading: Icon(
+                      Icons.camera,
+                      color: Colors.white,
+                    ),
                     onTap: () {
                       Navigator.pushNamed(context, '/Camera');
                     },
-                  subtitle: Text("Make Pdfs",style: TextStyle(
-                           color: CupertinoColors.white),),
+                    subtitle: Text(
+                      "Make Pdfs",
+                      style: TextStyle(color: CupertinoColors.white),
+                    ),
                     title: Text(
                       "Skilly Scanner",
-                      style: TextStyle(
-                          fontSize: 20, color: CupertinoColors.white),
+                      style:
+                          TextStyle(fontSize: 20, color: CupertinoColors.white),
                     ),
                   ),
-                  ListTile(leading: Hero(child: Icon(Icons.meeting_room,color: Colors.white,),tag: "Conf",),title: Text("Skilly Meet",style:TextStyle(
-                          fontSize: 20, color: CupertinoColors.white),
-                    ),subtitle: Text("Group Conference calling",style: TextStyle(
-                           color: CupertinoColors.white) ,),onTap: (){
-                    Navigator.pushNamed(context, "/Conference");
-                  },),
-                   ListTile(leading: Hero(child: Icon(Icons.chat_bubble,color: Colors.white,),tag: "Chat",),title: Text("Global Chat",style:TextStyle(
-                          fontSize: 20, color: CupertinoColors.white),
-                    ),subtitle: Text("Global Community Chat",style: TextStyle(
-                           color: CupertinoColors.white) ,),onTap: (){
-                    Navigator.pushNamed(context, "/GlobalChat");
-                  },),
-               ListTile(
-                 leading: Icon(Icons.policy,color:Colors.white),
+                  ListTile(
+                    leading: Hero(
+                      child: Icon(
+                        Icons.meeting_room,
+                        color: Colors.white,
+                      ),
+                      tag: "Conf",
+                    ),
+                    title: Text(
+                      "Skilly Meet",
+                      style:
+                          TextStyle(fontSize: 20, color: CupertinoColors.white),
+                    ),
+                    subtitle: Text(
+                      "Group Conference calling",
+                      style: TextStyle(color: CupertinoColors.white),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, "/Conference");
+                    },
+                  ),
+                  ListTile(
+                    leading: Hero(
+                      child: Icon(
+                        Icons.chat_bubble,
+                        color: Colors.white,
+                      ),
+                      tag: "Chat",
+                    ),
+                    title: Text(
+                      "Global Chat",
+                      style:
+                          TextStyle(fontSize: 20, color: CupertinoColors.white),
+                    ),
+                    subtitle: Text(
+                      "Global Community Chat",
+                      style: TextStyle(color: CupertinoColors.white),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, "/GlobalChat");
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.policy, color: Colors.white),
                     onTap: () {
                       Navigator.pushNamed(context, '/Privacy');
                     },
-                  subtitle: Text("Our Policy",style: TextStyle(
-                           color: CupertinoColors.white),),
+                    subtitle: Text(
+                      "Our Policy",
+                      style: TextStyle(color: CupertinoColors.white),
+                    ),
                     title: Text(
                       "Privacy Policy",
-                      style: TextStyle(
-                          fontSize: 20, color: CupertinoColors.white),
+                      style:
+                          TextStyle(fontSize: 20, color: CupertinoColors.white),
                     ),
                   ),
-                   
-                ListTile(
-                  leading: Icon(Icons.pageview,color: Colors.white,),
+                  ListTile(
+                    leading: Icon(
+                      Icons.pageview,
+                      color: Colors.white,
+                    ),
                     onTap: () {
                       Navigator.pushNamed(context, '/AboutUs');
                     },
-                   subtitle: Text("About our Applicaiton",style: TextStyle(
-                           color: CupertinoColors.white),),
+                    subtitle: Text(
+                      "About our Applicaiton",
+                      style: TextStyle(color: CupertinoColors.white),
+                    ),
                     title: Text(
                       "About Us",
-                      style: TextStyle(
-                          fontSize: 20, color: CupertinoColors.white),
+                      style:
+                          TextStyle(fontSize: 20, color: CupertinoColors.white),
                     ),
                   ),
-                 
                 ],
               ),
             )),
@@ -123,6 +157,20 @@ class _HomeState extends State<Home> {
 
             backgroundColor: Color(0xff00011f),
             appBar: AppBar(
+              actions: [
+             
+                IconButton(
+                  icon: Icon(Icons.camera),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,'/Camera'
+                    );
+                  },
+                ),  
+                 SizedBox(
+                  width: 8,
+                ),
+              ],
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
@@ -142,7 +190,7 @@ class _HomeState extends State<Home> {
                 },
                 child: Container(
                     child: Icon(
-                  Icons.table_chart,
+                  Icons.menu,
                   color: Colors.white,
                 )),
               ),

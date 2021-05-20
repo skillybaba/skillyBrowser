@@ -124,7 +124,7 @@ class _GlobalChatState extends State<GlobalChat> {
         ),
         body:LoadingOverlay(child: DashChat(
           alwaysShowSend: true,
-         
+      
           trailing: [IconButton(onPressed: (){
             showDialog(context: context,builder: (context){
               return AlertDialog(title: Text("Select One"),content: Container(
