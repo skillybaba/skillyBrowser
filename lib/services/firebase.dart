@@ -45,7 +45,16 @@ class FirebaseService {
     }
     return false;
   }
-
+ static checkPannel(pannel) async {
+    await Firebase.initializeApp();
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    var doc = firestore.collection('pannels');
+    var checkRoom = await doc.where("pannelid", isEqualTo: pannel).get();
+    if (checkRoom.docs.length > 0) {
+      return true;
+    }
+    return false;
+  }
   static void changeName(docid, name) async {
     await Firebase.initializeApp();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
