@@ -31,7 +31,7 @@ class ChatService {
     return crop;
   }
 
-  addMessagInNewsForum(forum, text, [image]) async {
+  addMessagInNewsForum(forum, text, [image,name]) async {
     await Firebase.initializeApp();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     var collection = firestore.collection('pannels');
@@ -40,6 +40,7 @@ class ChatService {
     if (!check) {
       var doc = await collection.add({
         "pannelid": forum,
+        "pannelname":name
       });
       collection2 = doc.collection("message");
     } else {

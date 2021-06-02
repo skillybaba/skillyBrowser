@@ -23,6 +23,7 @@ class _NewsFourmState extends State<NewsFourm> {
   User user;
   bool auth = false;
   Map chatMap = {};
+  bool msg = false;
   void checkAuth() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     if (pref.containsKey('info')) {
@@ -51,6 +52,7 @@ class _NewsFourmState extends State<NewsFourm> {
     await Firebase.initializeApp();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     var collection = firestore.collection("pannels");
+    print(await FirebaseService.checkPannel(pannelid));
     if (!(await FirebaseService.checkPannel(pannelid))) {
       await ChatService(
               user: User(
@@ -61,45 +63,56 @@ class _NewsFourmState extends State<NewsFourm> {
           .addMessagInNewsForum(pannelid, "Welcome to the $pannelname", null);
     }
     var doc2 = await collection.where("pannelid", isEqualTo: pannelid).get();
-    print(doc2.docs.length);
-    var collection2 = doc2.docs.first.reference.collection("message");
-    this.snap = collection2.snapshots().listen((event) {
-      if (!this.first) {
-        event.docChanges.forEach((element) {
-          var data = element.doc.data();
-          chatMap[data['datetime'].toString()] = data;
-        });
-        var list = this.chatMap.keys.toList();
-        list.sort();
-        list.forEach((element) {
-          this.message.add(ChatMessage(
-              text: chatMap[element]['text'],
-              image: chatMap[element]['image'],
-              createdAt: chatMap[element]['datetime'].toDate(),
-              user: ChatUser(
-                  name: chatMap[element]['user']['name'],
-                  uid: chatMap[element]['user']['number'],
-                  avatar: chatMap[element]['user']['avatar'])));
-        });
-        setState(() {
-          this.loading = false;
-        });
-        this.first = true;
-      } else {
-        event.docChanges.forEach((element) {
-          var data = element.doc.data();
-          this.message.add(ChatMessage(
-              text: data['text'],
-              image: data['image'],
-              createdAt: data['datetime'].toDate(),
-              user: ChatUser(
-                  name: data['user']['name'],
-                  uid: data['user']['number'],
-                  avatar: data['user']['avatar'])));
-        });
-        setState(() {});
-      }
-    });
+
+    // var doc2 = collection.doc("GDFAGprmBb9aTiwBqMJ3");
+
+    // doc2.docs.forEach((element) {
+    //   print(element.data());
+    // });
+    // print(doc2.docs.length);
+
+    var collection2 = doc2.docs[0].reference.collection("message");
+    if (auth) {
+      this.snap = collection2.snapshots().listen((event) {
+        this.msg = true;
+        if (!this.first) {
+          event.docChanges.forEach((element) {
+            var data = element.doc.data();
+            chatMap[data['datetime'].toString()] = data;
+          });
+          var list = this.chatMap.keys.toList();
+          list.sort();
+          list.forEach((element) {
+            this.message.add(ChatMessage(
+                text: chatMap[element]['text'],
+                image: chatMap[element]['image'],
+                createdAt: chatMap[element]['datetime'].toDate(),
+                user: ChatUser(
+                    name: chatMap[element]['user']['name'],
+                    uid: chatMap[element]['user']['number'],
+                    avatar: chatMap[element]['user']['avatar'])));
+          });
+          setState(() {
+            this.loading = false;
+          });
+          this.first = true;
+        } else {
+          event.docChanges.forEach((element) {
+            var data = element.doc.data();
+            print(data);
+            this.message.add(ChatMessage(
+                text: data['text'],
+                image: data['image'],
+                createdAt: data['datetime'].toDate(),
+                user: ChatUser(
+                    name: data['user']['name'],
+                    uid: data['user']['number'],
+                    avatar: data['user']['avatar'])));
+          });
+          setState(() {});
+        }
+      });
+    }
   }
 
   void dispose() {
@@ -110,7 +123,6 @@ class _NewsFourmState extends State<NewsFourm> {
   void initState() {
     super.initState();
     checkAuth();
-    getChats();
   }
 
   getImages(type) async {
@@ -134,10 +146,12 @@ class _NewsFourmState extends State<NewsFourm> {
             this.setState(() {
               this.auth = true;
               checkAuth();
-              getChats();
             });
           });
-    else
+    else {
+      if (!this.msg) {
+        this.getChats();
+      }
       return Scaffold(
           backgroundColor: Color(0xffE9CFEC),
           appBar: AppBar(
@@ -213,10 +227,11 @@ class _NewsFourmState extends State<NewsFourm> {
               user: ChatUser(name: this.user.name, avatar: this.user.dp),
               onSend: (message) {
                 ChatService(user: this.user).addMessagInNewsForum(
-                    pannelid, message.text, message.image);
+                    pannelid, message.text, message.image,pannelname);
               },
             ),
             isLoading: loading,
           ));
+    }
   }
 }
