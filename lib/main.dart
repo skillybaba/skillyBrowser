@@ -13,6 +13,7 @@ import "./screens/confrence.dart";
 import "./screens/meetingsettings.dart";
 import "./screens/globalchat.dart";
 import "./screens/newsforumpannel.dart";
+import "./screens/pannellist.dart";
 
 void main() {
   runApp(MaterialApp(
@@ -32,7 +33,8 @@ void main() {
       "/MeetingHistory": (context) => MeetingHistory(),
       "/MeetingSettings": (context) => MeetingSettings(),
       "/GlobalChat": (context) => GlobalChat(),
-      "/NewForum":(context)=>NewsFourm(),
+      "/NewForum": (context) => NewsFourm(),
+      "/PannelList":(context)=>PannelList(),
     },
   ));
 }

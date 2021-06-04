@@ -122,8 +122,10 @@ class _NewsSubState extends State<NewsSub> {
                     TextButton.icon(
                         onPressed: () {
                           Navigator.pushNamed(context, "/NewForum",
-                              arguments: {"pannelname":news[news.length - 1]['brief'],
+                              arguments: {
+                                "pannelname": news[news.length - 1]['brief'],
                               "pannelid":news[news.length - 1]['id'].toString(),
+                             
                               
                               });
                         },
@@ -209,7 +211,8 @@ class _NewsSubState extends State<NewsSub> {
                     TextButton.icon(
                         onPressed: () {
                            Navigator.pushNamed(context, "/NewForum",
-                              arguments: {"pannelname":news[news.length - 2]['brief'],
+                              arguments: {
+                                "pannelname":news[news.length - 2]['brief'],
                               "pannelid":news[news.length - 2]['id'].toString(),
                               
                               });

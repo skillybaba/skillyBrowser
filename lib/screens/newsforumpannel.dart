@@ -60,7 +60,7 @@ class _NewsFourmState extends State<NewsFourm> {
                   dp: "null",
                   name: "Skilly Browser",
                   number: "null"))
-          .addMessagInNewsForum(pannelid, "Welcome to the $pannelname", null);
+          .addMessagInNewsForum(pannelid, "Welcome to the $pannelname", null,this.pannelname);
     }
     var doc2 = await collection.where("pannelid", isEqualTo: pannelid).get();
 
@@ -185,8 +185,8 @@ class _NewsFourmState extends State<NewsFourm> {
                                               await this.getImages('camera');
 
                                           Navigator.pop(context);
-                                          await ChatService(user: this.user)
-                                              .addMessage("Media", image);
+                                          await ChatService(user: this.user).addMessagInNewsForum(
+                    pannelid, "Media",image,pannelname);
                                           setState(() {
                                             this.loading = false;
                                           });
@@ -204,8 +204,9 @@ class _NewsFourmState extends State<NewsFourm> {
                                           var image =
                                               await this.getImages("gallery");
                                           Navigator.pop(context);
-                                          await ChatService(user: this.user)
-                                              .addMessage("Media", image);
+                                          await ChatService(user: this.user).addMessagInNewsForum(
+                    pannelid, "Media",image,pannelname);
+              
                                           setState(() {
                                             this.loading = false;
                                           });
