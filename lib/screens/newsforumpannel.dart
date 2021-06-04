@@ -10,18 +10,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import "dart:io";
+import "../services/firebase.dart";
 
-class GlobalChat extends StatefulWidget {
+class NewsFourm extends StatefulWidget {
   @override
-  _GlobalChatState createState() => _GlobalChatState();
+  _NewsFourmState createState() => _NewsFourmState();
 }
 
-class _GlobalChatState extends State<GlobalChat> {
+class _NewsFourmState extends State<NewsFourm> {
   GlobalKey<DashChatState> key = GlobalKey<DashChatState>();
   List<ChatMessage> message = [];
   User user;
   bool auth = false;
   Map chatMap = {};
+  bool msg = false;
   void checkAuth() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     if (pref.containsKey('info')) {
@@ -35,16 +37,43 @@ class _GlobalChatState extends State<GlobalChat> {
       setState(() {});
   }
 
-  bool msg = false;
   bool first = false;
+  String pannelname;
+  var routedata;
+  String pannelid;
   StreamSubscription<QuerySnapshot> snap;
   void getChats() async {
+    this.routedata = ModalRoute.of(context).settings.arguments;
+    this.pannelname = this.routedata["pannelname"];
+    this.pannelid = this.routedata["pannelid"];
     this.loading = true;
+    print(1);
+
     await Firebase.initializeApp();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    var collection = firestore.collection("message");
+    var collection = firestore.collection("pannels");
+    print(await FirebaseService.checkPannel(pannelid));
+    if (!(await FirebaseService.checkPannel(pannelid))) {
+      await ChatService(
+              user: User(
+                  docid: "null",
+                  dp: "null",
+                  name: "Skilly Browser",
+                  number: "null"))
+          .addMessagInNewsForum(pannelid, "Welcome to the $pannelname", null,this.pannelname);
+    }
+    var doc2 = await collection.where("pannelid", isEqualTo: pannelid).get();
+
+    // var doc2 = collection.doc("GDFAGprmBb9aTiwBqMJ3");
+
+    // doc2.docs.forEach((element) {
+    //   print(element.data());
+    // });
+    // print(doc2.docs.length);
+
+    var collection2 = doc2.docs[0].reference.collection("message");
     if (auth) {
-      this.snap = collection.snapshots().listen((event) {
+      this.snap = collection2.snapshots().listen((event) {
         this.msg = true;
         if (!this.first) {
           event.docChanges.forEach((element) {
@@ -70,6 +99,7 @@ class _GlobalChatState extends State<GlobalChat> {
         } else {
           event.docChanges.forEach((element) {
             var data = element.doc.data();
+            print(data);
             this.message.add(ChatMessage(
                 text: data['text'],
                 image: data['image'],
@@ -106,6 +136,9 @@ class _GlobalChatState extends State<GlobalChat> {
   bool loading = false;
   @override
   Widget build(BuildContext context) {
+    this.routedata = ModalRoute.of(context).settings.arguments;
+    this.pannelname = this.routedata["pannelname"];
+    this.pannelid = this.routedata["pannelid"];
     if (!auth)
       return Login(
           type: "Global",
@@ -113,19 +146,17 @@ class _GlobalChatState extends State<GlobalChat> {
             this.setState(() {
               this.auth = true;
               checkAuth();
-             
             });
           });
     else {
-      if(!this.msg)
-      {
-         getChats();
+      if (!this.msg) {
+        this.getChats();
       }
       return Scaffold(
           backgroundColor: Color(0xffE9CFEC),
           appBar: AppBar(
             backgroundColor: CupertinoColors.systemPurple,
-            title: Text("Skilly Global"),
+            title: Text(this.pannelname),
           ),
           body: LoadingOverlay(
             child: DashChat(
@@ -154,8 +185,8 @@ class _GlobalChatState extends State<GlobalChat> {
                                               await this.getImages('camera');
 
                                           Navigator.pop(context);
-                                          await ChatService(user: this.user)
-                                              .addMessage("Media", image);
+                                          await ChatService(user: this.user).addMessagInNewsForum(
+                    pannelid, "Media",image,pannelname);
                                           setState(() {
                                             this.loading = false;
                                           });
@@ -173,8 +204,9 @@ class _GlobalChatState extends State<GlobalChat> {
                                           var image =
                                               await this.getImages("gallery");
                                           Navigator.pop(context);
-                                          await ChatService(user: this.user)
-                                              .addMessage("Media", image);
+                                          await ChatService(user: this.user).addMessagInNewsForum(
+                    pannelid, "Media",image,pannelname);
+              
                                           setState(() {
                                             this.loading = false;
                                           });
@@ -195,8 +227,8 @@ class _GlobalChatState extends State<GlobalChat> {
               messages: this.message,
               user: ChatUser(name: this.user.name, avatar: this.user.dp),
               onSend: (message) {
-                ChatService(user: this.user)
-                    .addMessage(message.text, message.image);
+                ChatService(user: this.user).addMessagInNewsForum(
+                    pannelid, message.text, message.image,pannelname);
               },
             ),
             isLoading: loading,

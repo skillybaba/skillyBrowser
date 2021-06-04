@@ -88,20 +88,56 @@ class _NewsSubState extends State<NewsSub> {
                   height: 20,
                 ),
                 Container(
-                  child: Center(
-                      child: RaisedButton.icon(
-                    color: Color(0xff040523),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/tabs', arguments: {
-                        'url': news[news.length - 1]['morelink'],
-                      });
-                    },
-                    icon: Icon(Icons.more_horiz, color: CupertinoColors.systemPurple),
-                    label: Text("READ MORE",
-                        style: TextStyle(color: CupertinoColors.systemPurple,),
+                    child: Row(
+                  children: [
+                    SizedBox(
+                      width: 30,
+                    ),
+                    ElevatedButton.icon(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.pressed))
+                              return Color(0xff040523);
+                            return Color(
+                                0xff040523); // Use the component's default.
+                          },
                         ),
-                  )),
-                ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/tabs', arguments: {
+                          'url': news[news.length - 1]['morelink'],
+                        });
+                      },
+                      icon: Icon(Icons.more_horiz,
+                          color: CupertinoColors.systemPurple),
+                      label: Text(
+                        "READ MORE",
+                        style: TextStyle(
+                          color: CupertinoColors.systemPurple,
+                        ),
+                      ),
+                    ),
+                    TextButton.icon(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/NewForum",
+                              arguments: {
+                                "pannelname": news[news.length - 1]['brief'],
+                              "pannelid":news[news.length - 1]['id'].toString(),
+                             
+                              
+                              });
+                        },
+                        icon: Icon(
+                          Icons.chat_bubble,
+                          color: CupertinoColors.systemPurple,
+                        ),
+                        label: Text("Disscuss",
+                            style:
+                                TextStyle(color: CupertinoColors.systemPurple)))
+                  ],
+                )),
                 SizedBox(
                   height: 40,
                 ),
@@ -134,29 +170,62 @@ class _NewsSubState extends State<NewsSub> {
                 Container(
                   child: Text(
                     news[news.length - 2]['brief'],
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
                 SizedBox(
                   height: 40,
                 ),
                 Container(
-                  child: Center(
-                      child: RaisedButton.icon(
-                    color: Color(0xff040523),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/tabs', arguments: {
-                        'url': news[news.length - 2]['morelink'],
-                      });
-                    },
-                    icon: Icon(Icons.more_horiz, color: CupertinoColors.systemPurple),
-                    label: Text("READ MORE",
-                        style: TextStyle(color: CupertinoColors.systemPurple)),
-                  )),
-                ),
+                    child: Row(
+                  children: [
+                    SizedBox(
+                      width: 30,
+                    ),
+                    ElevatedButton.icon(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.pressed))
+                              return Color(0xff040523);
+                            return Color(
+                                0xff040523); // Use the component's default.
+                          },
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/tabs', arguments: {
+                          'url': news[news.length - 2]['morelink'],
+                        });
+                      },
+                      icon: Icon(Icons.more_horiz,
+                          color: CupertinoColors.systemPurple),
+                      label: Text(
+                        "READ MORE",
+                        style: TextStyle(
+                          color: CupertinoColors.systemPurple,
+                        ),
+                      ),
+                    ),
+                    TextButton.icon(
+                        onPressed: () {
+                           Navigator.pushNamed(context, "/NewForum",
+                              arguments: {
+                                "pannelname":news[news.length - 2]['brief'],
+                              "pannelid":news[news.length - 2]['id'].toString(),
+                              
+                              });
+                        },
+                        icon: Icon(
+                          Icons.chat_bubble,
+                          color: CupertinoColors.systemPurple,
+                        ),
+                        label: Text("Disscuss",
+                            style:
+                                TextStyle(color: CupertinoColors.systemPurple)))
+                  ],
+                )),
                 SizedBox(
                   height: 40,
                 ),
@@ -168,7 +237,8 @@ class _NewsSubState extends State<NewsSub> {
                         arguments: {'news': news});
                   },
                   icon: Icon(Icons.add, color: Color(0xff040523)),
-                  label: Text("MORE", style: TextStyle(color: Color(0xff040523))),
+                  label:
+                      Text("MORE", style: TextStyle(color: Color(0xff040523))),
                 ),
               ],
             )))),

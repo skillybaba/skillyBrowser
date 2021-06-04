@@ -17,6 +17,20 @@ class FirebaseService {
   }
   static bool authDone = false;
   static DocumentReference doc;
+  static newsfourm({name = "all"}) async {
+    await Firebase.initializeApp();
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    var collection = firestore.collection("pannels");
+    QuerySnapshot docs;
+    if (name == "all")
+     docs = await collection.get();
+     else
+     docs=await collection.where("pannelname",arrayContains: name).get();
+  
+      return docs;
+  }
+
   static meetingStore(
       {String roomid, String hostnumber, String hostdocid}) async {
     await Firebase.initializeApp();
@@ -40,6 +54,17 @@ class FirebaseService {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     var doc = firestore.collection('meetings');
     var checkRoom = await doc.where("roomid", isEqualTo: roomid).get();
+    if (checkRoom.docs.length > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  static checkPannel(pannel) async {
+    await Firebase.initializeApp();
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    var doc = firestore.collection('pannels');
+    var checkRoom = await doc.where("pannelid", isEqualTo: pannel).get();
     if (checkRoom.docs.length > 0) {
       return true;
     }

@@ -12,9 +12,11 @@ import './screens/meethistory.dart';
 import "./screens/confrence.dart";
 import "./screens/meetingsettings.dart";
 import "./screens/globalchat.dart";
+import "./screens/newsforumpannel.dart";
+import "./screens/pannellist.dart";
+
 void main() {
   runApp(MaterialApp(
-    
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: {
@@ -25,12 +27,14 @@ void main() {
       '/histroy': (context) => HistoryScreen(),
       '/Camera': (context) => CameraScreen(),
       '/PDF': (context) => PDFViewer(),
-      '/Privacy':(context) => Privacy(),
-      '/AboutUs' : (context) => AboutUs(),
-      "/Conference":(context) => Conference(),
-      "/MeetingHistory":(context)=>MeetingHistory(),
-      "/MeetingSettings":(context)=>MeetingSettings(),
-      "/GlobalChat":(context)=>GlobalChat(),
+      '/Privacy': (context) => Privacy(),
+      '/AboutUs': (context) => AboutUs(),
+      "/Conference": (context) => Conference(),
+      "/MeetingHistory": (context) => MeetingHistory(),
+      "/MeetingSettings": (context) => MeetingSettings(),
+      "/GlobalChat": (context) => GlobalChat(),
+      "/NewForum": (context) => NewsFourm(),
+      "/PannelList":(context)=>PannelList(),
     },
   ));
 }

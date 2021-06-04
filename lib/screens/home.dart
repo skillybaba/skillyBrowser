@@ -112,6 +112,21 @@ class _HomeState extends State<Home> {
                     },
                   ),
                   ListTile(
+                    leading:Icon(Icons.chat_sharp,   color: Colors.white,),
+                    title: Text(
+                      "News Pannels",
+                      style:
+                          TextStyle(fontSize: 20, color: CupertinoColors.white),
+                    ),
+                    subtitle: Text(
+                      "News Discussion Pannels",
+                      style: TextStyle(color: CupertinoColors.white),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, "/PannelList");
+                    },
+                  ),
+                  ListTile(
                     leading: Icon(Icons.policy, color: Colors.white),
                     onTap: () {
                       Navigator.pushNamed(context, '/Privacy');

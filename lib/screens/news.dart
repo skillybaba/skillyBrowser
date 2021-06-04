@@ -73,23 +73,49 @@ class _NewsState extends State<News> {
                                       color: Colors.white,
                                       fontSize: 10,
                                       decoration: TextDecoration.none))),
-                          RaisedButton.icon(
-                              color: Color(0xff040523),
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/tabs',
-                                    arguments: {
-                                      'url': news[news.length - 1 - index]
-                                          ['morelink'],
-                                    });
-                              },
-                              label: Text(
-                                'ReadMore',
-                                style: TextStyle(color: CupertinoColors.systemPurple),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 30,
                               ),
-                              icon: Icon(
-                                Icons.more_horiz,
-                                color: CupertinoColors.systemPurple,
-                              )),
+                              RaisedButton.icon(
+                                  color: Color(0xff040523),
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/tabs',
+                                        arguments: {
+                                          'url': news[news.length - 1 - index]
+                                              ['morelink'],
+                                        });
+                                  },
+                                  label: Text(
+                                    'ReadMore',
+                                    style: TextStyle(
+                                        color: CupertinoColors.systemPurple),
+                                  ),
+                                  icon: Icon(
+                                    Icons.more_horiz,
+                                    color: CupertinoColors.systemPurple,
+                                  )),
+                              TextButton.icon(
+                                  onPressed: () {
+                                     Navigator.popAndPushNamed(context, "/NewForum",
+                              arguments: {
+                                "pannelname":news[news.length - 1 - index]['brief'],
+                              "pannelid":news[news.length - 1 - index]['id'].toString(),
+                              
+                              });
+                                  },
+                                  icon: Icon(
+                                    Icons.chat_bubble,
+                                    color: CupertinoColors.systemPurple,
+                                  ),
+                                  label: Text(
+                                    "Discuss",
+                                    style: TextStyle(
+                                        color: CupertinoColors.systemPurple),
+                                  ))
+                            ],
+                          )
                         ],
                       ),
                     );
