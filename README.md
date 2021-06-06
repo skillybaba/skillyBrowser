@@ -12,6 +12,14 @@ try it out from Google Play store [Skilly_Browser](https://play.google.com/store
 This is a super application with features like internet browsing,conference calling,pdf scanner,gobal chat pannel.
 and in near future we are gona add more to it also.
 
+## News API
+1. [News Api](https://skillybaba.pythonanywhere.com/skillybrowserapi/news/?format=json)
+Request Api :- https://skillybaba.pythonanywhere.com/skillybrowserapi/news/?format=json
+Response :- 	[{
+id:76
+brief:"Cow Our Mother, Slaughter Must Stop,\" Says Assam's Himanta Biswa Sarma"
+morelink:"https://www.ndtv.com/india-news/cow-our-mother-slaughter-must-stop-says-assams-himanta-biswa-sarma-2448675"
+image:"/media/Images/mom3qb9_himanta-biswa-sarma-instagram-650_625x300_09_May_21.webp"}]
 
 ## Preview
 
