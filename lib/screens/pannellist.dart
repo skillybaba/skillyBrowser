@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import "../models/newfourm.dart";
 import "../services/newsforumService.dart";
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PannelList extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class _PannelListState extends State<PannelList> {
   bool search = false;
   TextEditingController controller = TextEditingController();
   List<NewsFourumModel> models = [];
+  bool auth = true;
   NewsForumService service = NewsForumService();
   List<NewsFourumModel> searchlist = [];
   filternews(String name) {
@@ -27,25 +29,30 @@ class _PannelListState extends State<PannelList> {
   }
 
   getnews() async {
-    
-    var docs = await service.getNewsChats();
-    
-    docs.docs.forEach((element) {
-      var data = element.data();
-      if (data["s"] == "s") {
-      } else {
-        models.add(NewsFourumModel(
-            pannelName: data["pannelname"],
-            pannelid: data["pannelid"],
-            docid: element.reference.path));
-      }
-    });
-    searchlist = this.models;
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if (!pref.containsKey("info")) {
+      auth = false;
+      setState(() {});
+    } else {
+      auth = true;
+      var docs = await service.getNewsChats();
 
-    
-    this.finalval = true;
-    this.newsloading = true;
-    setState(() {});
+      docs.docs.forEach((element) {
+        var data = element.data();
+        if (data["s"] == "s") {
+        } else {
+          models.add(NewsFourumModel(
+              pannelName: data["pannelname"],
+              pannelid: data["pannelid"],
+              docid: element.reference.path));
+        }
+      });
+      searchlist = this.models;
+
+      this.finalval = true;
+      this.newsloading = true;
+      setState(() {});
+    }
   }
 
   bool newsloading = false;
@@ -92,42 +99,48 @@ class _PannelListState extends State<PannelList> {
               })
         ],
       ),
-      body: finalval
-          ? ListView.builder(itemBuilder: (context, index) {
-              if (index < this.searchlist.length) {
-                return Container(
-                    margin: EdgeInsets.all(10),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        child: ListTile(
-                          tileColor: CupertinoColors.systemPurple,
-                          leading: Icon(
-                            Icons.chat_bubble_outline_rounded,
-                            color: Colors.white,
-                          ),
-                          title: Text(
-                            this.searchlist[index].pannelName,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          subtitle: Text(
-                            "Click Here to join the discussion",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onTap: () {
-                            Navigator.pushNamed(context, "/NewForum",
-                                arguments: {
-                                  "pannelname":
-                                      this.searchlist[index].pannelName,
-                                  "pannelid": this.searchlist[index].pannelid,
-                                });
-                          },
-                        )));
-              }
-            })
-          : SpinKitCircle(
-              color: CupertinoColors.systemPurple,
-              size: 50,
-            ),
+      body: !auth
+          ? Center(
+              child: Text("Please Login First",
+                  style: TextStyle(color: Colors.white)),
+            )
+          : finalval
+              ? ListView.builder(itemBuilder: (context, index) {
+                  if (index < this.searchlist.length) {
+                    return Container(
+                        margin: EdgeInsets.all(10),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            child: ListTile(
+                              tileColor: CupertinoColors.systemPurple,
+                              leading: Icon(
+                                Icons.chat_bubble_outline_rounded,
+                                color: Colors.white,
+                              ),
+                              title: Text(
+                                this.searchlist[index].pannelName,
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: Text(
+                                "Click Here to join the discussion",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              onTap: () {
+                                Navigator.pushNamed(context, "/NewForum",
+                                    arguments: {
+                                      "pannelname":
+                                          this.searchlist[index].pannelName,
+                                      "pannelid":
+                                          this.searchlist[index].pannelid,
+                                    });
+                              },
+                            )));
+                  }
+                })
+              : SpinKitCircle(
+                  color: CupertinoColors.systemPurple,
+                  size: 50,
+                ),
     );
   }
 }
