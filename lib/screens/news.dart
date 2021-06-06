@@ -110,7 +110,7 @@ class _NewsState extends State<News> {
                                     color: CupertinoColors.systemPurple,
                                   ),
                                   label: Text(
-                                    "Discuss",
+                                    "Debate",
                                     style: TextStyle(
                                         color: CupertinoColors.systemPurple),
                                   ))

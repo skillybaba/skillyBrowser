@@ -26,7 +26,7 @@ class _AboutUsState extends State<AboutUs> {
               Text(
                 '''Skilly Browser by Skillybaba 2021 Copyright
 
-                           Version 2.2.0
+                           Version 2.2.1
              ''',
                 style: TextStyle(color: Colors.white),
               ),

@@ -133,7 +133,7 @@ class _NewsSubState extends State<NewsSub> {
                           Icons.chat_bubble,
                           color: CupertinoColors.systemPurple,
                         ),
-                        label: Text("Disscuss",
+                        label: Text("Debate",
                             style:
                                 TextStyle(color: CupertinoColors.systemPurple)))
                   ],
@@ -221,7 +221,7 @@ class _NewsSubState extends State<NewsSub> {
                           Icons.chat_bubble,
                           color: CupertinoColors.systemPurple,
                         ),
-                        label: Text("Disscuss",
+                        label: Text("Debate",
                             style:
                                 TextStyle(color: CupertinoColors.systemPurple)))
                   ],
