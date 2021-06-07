@@ -6,7 +6,7 @@ try it out from Google Play store [Skilly_Browser](https://play.google.com/store
 
 ## APK LINK
 
-[Skilly Browser APK](https://drive.google.com/file/d/1YO3wYJjVFKowbU4Vpc_Yte0lYvUXbeU-/view?usp=sharing)
+[Skilly Browser APK](https://drive.google.com/file/d/1-zqGW_yKZsxAC-KxKUMlLUwMyg0VLVYr/view?usp=sharing)
 
 ## About
 This is a super application with features like internet browsing,conference calling,pdf scanner,gobal chat pannel.
