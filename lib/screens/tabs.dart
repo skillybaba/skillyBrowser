@@ -43,6 +43,8 @@ class _TabsState extends State<Tabs> {
     webviewPlugin.onUrlChanged.listen(
       (event) {
         controller.text = event;
+        setval(event);
+        addrecord(st: event);
         if (!histval) {
           print('vs');
           setval(event);

@@ -16,9 +16,12 @@ addrecord({String st}) async {
     // if (st.contains('www.')) {
     //   st = st.substring(13, st.length - 5);
     // }
-    Response res = await get(
-        'https://skillybaba.pythonanywhere.com/skillybrowserapi/recordsgo/' +
-            st);
+    Response res = await post(
+        'https://skillybaba.pythonanywhere.com/skillybrowserapi/recordsgo/',
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(<String, String>{
+      'url': st,
+    }));
     print(jsonDecode(res.body));
 
     return true;
