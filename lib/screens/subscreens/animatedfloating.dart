@@ -53,6 +53,7 @@ class _AnimatedfloatingState extends State<Animatedfloating> {
                   'https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjq8NaJie_qAhVRIbcAHSwAA2gQPAgH',
             });
           },
+
           child: Icon(Icons.add_circle_outline),
         )
       ],

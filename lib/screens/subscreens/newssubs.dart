@@ -2,10 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_widgets/animated_widgets.dart';
 
+import 'package:page_transition/page_transition.dart';
+
 class NewsSub extends StatefulWidget {
   var news;
-  NewsSub({var news}) {
+  Color backGroundColor;
+  NewsSub({var news , Color backGroundColor}) {
     this.news = news;
+    this.backGroundColor = backGroundColor;
   }
   @override
   _NewsSubState createState() => _NewsSubState(news: news);
@@ -26,7 +30,7 @@ class _NewsSubState extends State<NewsSub> {
         child: Container(
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
-                color: Color(0xff040523),
+                color: widget.backGroundColor, //Color(0xff040523),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30))),

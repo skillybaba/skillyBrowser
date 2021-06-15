@@ -54,6 +54,11 @@ dependencies:
   dash_chat: ^1.1.15
   loading_overlay: ^0.2.1
 
+  flutter_staggered_animations: ^1.0.0
+  page_transition: ^2.0.2
+  native_state: ^1.1.1
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
